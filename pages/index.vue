@@ -5,24 +5,26 @@
         <section class="bg-blue-500 text-white min-h-screen flex items-center justify-center">
             <div class="text-center">
                 <h1 class="text-5xl font-bold mb-4">Partyanimals</h1>
-                <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti quaerat temporibus nobis aliquid voluptatibus ratione atque officia asperiores modi deserunt? Labore nam, praesentium aliquid consequatur voluptate ipsa excepturi recusandae cupiditate.</p>
+                <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <button
                     class="mt-8 bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Get
                     Started</button>
             </div>
         </section>
-
+        
         <!-- About Me Section -->
-        <section class="bg-gray-100 min-h-screen flex items-center justify-center">
+        <WavyDivider color-top="bg-blue-500" color-bottom="fill-gray-200"></WavyDivider>
+        <section class="bg-gray-200 min-h-screen flex items-center justify-center">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-6">About Me</h2>
-                <p class="text-xl">I'm a passionate developer with years of experience in creating innovative solutions.
-                    My goal is to help businesses grow through technology.</p>
+                <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
         </section>
+        
 
         <!-- Pricing Section -->
-        <section class="bg-white min-h-screen flex items-center justify-center">
+        <WavyDivider color-top="bg-gray-200" color-bottom="fill-yellow-200"></WavyDivider>
+        <section class="bg-yellow-200 min-h-screen flex items-center justify-center">
             <div class="max-w-6xl mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-8">
@@ -31,9 +33,9 @@
                         <h3 class="text-2xl font-bold mb-4">Basic</h3>
                         <p class="text-4xl font-bold mb-6">$9.99<span class="text-sm font-normal">/month</span></p>
                         <ul class="mb-8">
-                            <li class="mb-2">Feature 1</li>
-                            <li class="mb-2">Feature 2</li>
-                            <li class="mb-2">Feature 3</li>
+                            <li class="mb-2">2u</li>
+                            <li class="mb-2">2-6 kinderen</li>
+                            <li class="mb-2">Glitters</li>
                         </ul>
                         <button
                             class="mt-auto bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300">Choose
@@ -75,7 +77,8 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="bg-gray-100 min-h-screen flex items-center justify-center">
+        <WavyDivider color-top="bg-yellow-200" color-bottom="fill-green-200"></WavyDivider>
+        <section class="bg-green-200 min-h-screen flex items-center justify-center">
             <div class="max-w-4xl mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
                 <div class="space-y-6">
@@ -98,7 +101,8 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="bg-blue-500 text-white min-h-screen flex items-center justify-center">
+        <WavyDivider color-top="bg-green-200" color-bottom="fill-orange-200"></WavyDivider>
+        <section class="bg-orange-200 text-white min-h-screen flex items-center justify-center">
             <div class="max-w-4xl mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold mb-8">Get in Touch</h2>
                 <p class="text-xl mb-8">Have questions? We're here to help. Reach out to us anytime.</p>
