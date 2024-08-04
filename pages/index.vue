@@ -3,15 +3,26 @@
     <div class="min-h-screen">
         <!-- Hero Section -->
         <section class="bg-blue-500 text-white min-h-screen flex items-center justify-center">
-            <div class="text-center">
-                <h1 class="text-5xl font-bold mb-4">Partyanimals</h1>
-                <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <button
-                    class="mt-8 bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Get
-                    Started</button>
+          <Confetti/>
+            <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+                <div class="mr-auto place-self-center lg:col-span-7">
+                    <h1
+                        class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                        Party Animals</h1>
+                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                        Lorem ipsom bla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla
+                        blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla.</p>
+                    <button
+                        class="mt-8 bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Get
+                        Started</button>
+                </div>
+                <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+                    <img
+                        src="https://www.partyanimalsbelgium.be/wp-content/uploads/2024/04/Content-Britt-2-1-2048x1536.jpg">
+                </div>
             </div>
         </section>
-        
+
         <!-- About Me Section -->
         <WavyDivider color-top="bg-blue-500" color-bottom="fill-gray-200"></WavyDivider>
         <section class="bg-gray-200 min-h-screen flex items-center justify-center">
@@ -20,7 +31,7 @@
                 <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
         </section>
-        
+
 
         <!-- Pricing Section -->
         <WavyDivider color-top="bg-gray-200" color-bottom="fill-yellow-200"></WavyDivider>
@@ -100,8 +111,15 @@
             </div>
         </section>
 
+        <WavyDivider color-top="bg-green-200" color-bottom="fill-cyan-200"></WavyDivider>
+        <section class="bg-cyan-200 min-h-20 flex items-center justify-center">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-12">media / partners</h2>
+            </div>
+        </section>
+
         <!-- Contact Section -->
-        <WavyDivider color-top="bg-green-200" color-bottom="fill-orange-200"></WavyDivider>
+        <WavyDivider color-top="bg-cyan-200" color-bottom="fill-orange-200"></WavyDivider>
         <section class="bg-orange-200 text-white min-h-screen flex items-center justify-center">
             <div class="max-w-4xl mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold mb-8">Get in Touch</h2>
@@ -119,8 +137,9 @@
     </div>
 </template>
 
-<script setup>
-// No additional script needed for this example
+<script setup lang="ts">
+
+import Confetti from "~/components/Confetti.vue";
 </script>
 
 <style>
