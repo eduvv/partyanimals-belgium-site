@@ -12,7 +12,7 @@
           <p class="max-w-2xl mb-6 font-light text-text font-poppins lg:mb-8 md:text-lg lg:text-2xl">
             Waar we van elk feest een onvergetelijk moment maken.</p>
           <button
-              onclick="document.getElementById('pricing').scrollIntoView();"
+              onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});"
               class="mt-5 bg-secondary text-primary py-2 px-6 rounded-full text-xl font-semibold font-monograss hover:bg-primary hover:text-secondary hover:border-secondary hover:border-2 duration-100">
             Boek nu
           </button>
