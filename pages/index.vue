@@ -2,39 +2,37 @@
 <template>
     <div class="min-h-screen">
         <!-- Hero Section -->
-        <section class="bg-blue-500 text-white min-h-screen flex items-center justify-center">
+        <section class="bg-primary min-h-screen flex items-center justify-center">
           <Confetti/>
             <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                 <div class="mr-auto place-self-center lg:col-span-7">
                     <h1
-                        class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                        class="max-w-2xl mb-4 text-6xl font-monograss text-text tracking-tight leading-none md:text-6xl xl:text-8xl">
                         Party Animals</h1>
-                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                        Lorem ipsom bla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla
-                        blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla.</p>
+                    <p class="max-w-2xl mb-6 font-light text-text font-poppins lg:mb-8 md:text-lg lg:text-2xl">
+                        Waar we van elk feest een onvergetelijk moment maken.</p>
                     <button
-                        class="mt-8 bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Get
-                        Started</button>
+                        class="mt-5 bg-secondary text-primary py-2 px-6 rounded-full text-xl font-semibold font-monograss hover:bg-primary hover:text-secondary hover:border-secondary hover:border-2 duration-300">Boek nu</button>
                 </div>
-                <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                    <img
-                        src="https://www.partyanimalsbelgium.be/wp-content/uploads/2024/04/Content-Britt-2-1-2048x1536.jpg">
+                <div class="hidden lg:mt-0 lg:col-span-5 lg:flex blob">
+<!--                    <img>-->
                 </div>
             </div>
         </section>
 
         <!-- About Me Section -->
-        <WavyDivider color-top="bg-blue-500" color-bottom="fill-gray-200"></WavyDivider>
-        <section class="bg-gray-200 min-h-screen flex items-center justify-center">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">About Me</h2>
-                <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <WavyDivider color-top="bg-primary" color-bottom="fill-secondary"></WavyDivider>
+        <section class="bg-secondary min-h-screen flex items-center justify-center">
+            <div class="max-w-4xl mx-auto text-start">
+                <h2 class="text-3xl text-primary font-monograss mb-6">About Me</h2>
+              <p class="text-xl text-primary font-poppins mb-2">Ik ben Britt het gezicht achter Partyanimals Belgium, 24 jaar en enorm gepassioneerd om magische momenten voor kids te creëren.</p>
+              <p class="text-xl text-primary font-poppins">Jarenlang ben ik al bezig met kids entertainment, maar eindelijk heb ik van mijn grote passie mijn beroep kunnen maken. Laten we samen onvergetelijke momenten maken.</p>
             </div>
         </section>
 
 
         <!-- Pricing Section -->
-        <WavyDivider color-top="bg-gray-200" color-bottom="fill-yellow-200"></WavyDivider>
+        <WavyDivider color-top="bg-secondary" color-bottom="fill-yellow-200"></WavyDivider>
         <section class="bg-yellow-200 min-h-screen flex items-center justify-center">
             <div class="max-w-6xl mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
@@ -143,5 +141,25 @@ import Confetti from "~/components/Confetti.vue";
 </script>
 
 <style>
-/* Any additional styles can be added here if needed */
+.blob{
+  background-image: url(https://www.partyanimalsbelgium.be/wp-content/uploads/2024/04/Content-Britt-2-1-2048x1536.jpg);
+  width: 380px;
+  height: 380px;
+  background-size: cover;
+  --webkit-background-position: center;
+  background-position: center center;
+  margin: 20px;
+  box-shadow: 0 5px 50px 0 #D81559 inset, 0 5px 100px 10px #F8E5EE;
+  animation: animate 5s ease-in-out infinite;
+  transition: all 1s ease-in-out;
+}
+
+@keyframes animate {
+  0%, 100%{
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50%{
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
 </style>

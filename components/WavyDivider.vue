@@ -12,8 +12,6 @@ const props = defineProps({
     colorBottom: String | 'fill-red-500',
     colorTop: String | 'bg-red-500'
 })
-
-
 </script>
 <style scoped>
 .custom-shape-divider-bottom-1722183052 {

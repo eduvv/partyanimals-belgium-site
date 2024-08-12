@@ -3,6 +3,7 @@
 import {tsParticles} from '@tsparticles/engine'
 import {loadConfettiPreset} from '@tsparticles/preset-confetti';
 import {onMounted} from "vue";
+import colors from '../config/colors'
 
 onMounted(async () => {
   await loadConfettiPreset(tsParticles)
@@ -12,7 +13,7 @@ onMounted(async () => {
       emitters: {
         particles: {
           color: {
-            value: "FF0000"
+            value: [Object.values(colors)]
           },
           move: {
             speed: 300, // Adjust speed as necessary = height of spread
