@@ -15,5 +15,8 @@
     "@tsparticles/preset-confetti": "^3.1.0",
     "nuxt": "^3.12.4",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
   }
 }
