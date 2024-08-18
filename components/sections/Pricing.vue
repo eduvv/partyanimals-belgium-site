@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <section class="bg-yellow-200 min-h-screen flex items-center justify-center">
+  <section class="bg-yellow-200 flex items-center justify-center">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
       <div class="flex flex-col md:flex-row justify-center items-center gap-8">

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <section class="bg-orange-200 text-white min-h-screen flex items-center justify-center">
+  <section class="bg-orange-200 text-white flex items-center justify-center">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-8">Get in Touch</h2>
       <p class="text-xl mb-8">Have questions? We're here to help. Reach out to us anytime.</p>

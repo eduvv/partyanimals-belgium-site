@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-1/2 transform -translate-y-1/2 left-4">
+  <div class="fixed fixed-center left-4 ">
     <div v-for="(section, index) in props.sections" :key="index" class="mb-4 relative">
       <div
           @click="scrollToSection(index)"
@@ -38,7 +38,7 @@ const props = defineProps({
   }
 })
 
-let observer:IntersectionObserver
+let observer: IntersectionObserver
 
 const scrollToSection = (index) => {
   const section = document.querySelectorAll('section')[index]
@@ -62,7 +62,7 @@ onMounted(() => {
         })
       },
       {
-        threshold: 0.5 // Adjust this threshold as needed
+        threshold: 0.75  // Adjust this threshold as needed
       }
   )
 
@@ -82,5 +82,10 @@ onUnmounted(() => {
 <style scoped lang="scss">
 div {
   z-index: 1000; // todo ugly, fix
+}
+
+.fixed-center {
+  top: calc(50vh);
+  transform: translateY(-50%);
 }
 </style>
