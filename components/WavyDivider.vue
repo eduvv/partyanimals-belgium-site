@@ -9,22 +9,68 @@
   </div>
 </template>
 <script setup lang="ts">
+import {onBeforeUnmount} from "vue";
+
 const props = defineProps({
   colorBottom: {
     type: String,
-    required: true,
+    required: false,
     default() {
       return 'fill-green-500'
     }
   },
   colorTop: {
     type: String,
-    required: true,
+    required: false,
     default() {
       return 'bg-yellow-500'
     }
   }
 })
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        console.log("in view", entry.target.id)
+        window.addEventListener('scroll', handleScroll);
+      } else {
+        console.log("out view", entry.target.id)
+        window.removeEventListener('scroll', handleScroll);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.wave-container').forEach(waveContainer => {
+    observer.observe(waveContainer);
+  });
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+})
+
+
+function handleScroll() {
+  const waves = document.querySelectorAll('.wave-container')
+  waves.forEach((waveContainer) => {
+    const wave = waveContainer.querySelector('.wave')
+    const rect = waveContainer.getBoundingClientRect();
+
+    const waveHeight = rect.height;
+    const waveTop = rect.top;
+    const waveBottom = rect.bottom;
+
+    const progress = Math.min(Math.max((window.innerHeight - waveTop) / (window.innerHeight + waveHeight) * 100, 0), 100);
+
+    const movement = progress * 2; // Adjust multiplier for desired effect
+    if (wave?.style) {
+      wave.style.transform = `translateX(-${movement}px)`;
+    }
+  });
+}
 </script>
 <style scoped lang="scss">
 .wave-container {
