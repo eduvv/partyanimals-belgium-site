@@ -1,23 +1,24 @@
 <template>
-  <div class="snap-y snap-mandatory h-screen overflow-y-scroll">
-    <ScrollIndicator />
-    <section
-        v-for="section in 5"
-        :key="section"
-        :class="['snap-start', 'h-screen', 'flex', 'items-center', 'justify-center']"
-        :style="{ backgroundColor: `hsl(${section * 72}, 50%, 70%)` }"
-    >
-      <h1 class="text-4xl">Section {{ section }}</h1>
+  <div>
+    <section class="bg-blue-500 h-screen flex justify-center items-center">
+       Content for Section 1
+    </section>
+
+    <WavyDivider id="wave1" :color-bottom="'fill-green-500'" :color-top="'bg-blue-500'"/>
+    <section class="bg-green-500 h-screen flex justify-center items-center">
+       Content for Section 2
+    </section>
+
+    <WavyDivider id="wave2"/>
+    <section class="bg-red-500 h-screen flex justify-center items-center">
+      Content for Section 3
     </section>
   </div>
 </template>
 
-<script setup>
-import ScrollIndicator from '~/components/ScrollIndicator.vue';
+<script>
+
 </script>
 
-<style>
-html {
-  scroll-behavior: smooth;
-}
+<style scoped lang="scss">
 </style>
