@@ -12,8 +12,7 @@
            class="bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Email
           Us</a>
         <a href="tel:+1234567890"
-           class="bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Call
-          Us</a>
+           class="bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Reviews</a>
       </div>
     </div>
   </section>

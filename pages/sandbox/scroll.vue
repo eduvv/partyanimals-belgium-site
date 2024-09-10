@@ -17,7 +17,7 @@ const colors = ['bg-red-500', 'bg-yellow-500', 'bg-green-500', 'bg-blue-500', 'b
     <ScrollIndicator :sections="sections"/>
     <section v-for="(section,index) in sections" :class="colors[index]"
              class="h-screen flex justify-center items-center">
-      <h1>{{ section.id }}</h1>
+      <h1>{{ $t('welcome') + "  "+ section.id }}</h1>
     </section>
   </div>
 </template>
