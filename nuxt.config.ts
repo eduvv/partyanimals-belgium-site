@@ -29,6 +29,7 @@ export default defineNuxtConfig({
                 code: 'fr',
                 iso: 'fr-FR'
             }],
-        defaultLocale: 'nl'
+        defaultLocale: 'nl',
+        detectBrowserLanguage: false
     },
 })
