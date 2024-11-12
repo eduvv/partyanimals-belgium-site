@@ -7,23 +7,22 @@
     <SectionsHero class="min-h-screen"/>
 
     <!-- About Me Section -->
-    <WavyDivider color-top="bg-primary" color-bottom="fill-secondary"></WavyDivider>
+<!--    <WavyDivider color-top="bg-primary" color-bottom="fill-secondary"></WavyDivider>-->
     <SectionsAbout class="min-h-screen"/>
 
-
     <!-- Pricing Section -->
-    <WavyDivider id="pricing" color-top="bg-secondary" color-bottom="fill-yellow-200"></WavyDivider>
+<!--    <WavyDivider id="pricing" color-top="bg-secondary" color-bottom="fill-secondary"></WavyDivider>-->
     <SectionsPricing class="min-h-screen"/>
 
     <!-- FAQ Section -->
-    <WavyDivider color-top="bg-yellow-200" color-bottom="fill-green-200"></WavyDivider>
+<!--    <WavyDivider color-top="bg-secondary" color-bottom="fill-green-200"></WavyDivider>-->
     <SectionsFaq class="min-h-screen"/>
 
-    <WavyDivider color-top="bg-green-200" color-bottom="fill-cyan-200"></WavyDivider>
+<!--    <WavyDivider color-top="bg-green-200" color-bottom="fill-cyan-200"></WavyDivider>-->
     <SectionsPartners class="h-32"/>
 
     <!-- Contact Section -->
-    <WavyDivider color-top="bg-cyan-200" color-bottom="fill-orange-200"></WavyDivider>
+<!--    <WavyDivider color-top="bg-cyan-200" color-bottom="fill-orange-200"></WavyDivider>-->
     <SectionsContact class="min-h-screen"/>
   </div>
 </template>

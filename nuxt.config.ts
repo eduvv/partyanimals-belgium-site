@@ -32,4 +32,11 @@ export default defineNuxtConfig({
         defaultLocale: 'nl',
         detectBrowserLanguage: false
     },
+    vite: {
+        server: {
+            watch: {
+                usePolling: true
+            }
+        }
+    }
 })

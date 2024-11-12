@@ -14,6 +14,15 @@ module.exports = {
                 monograss: ['"Mono Grass"', 'sans-serif'],
                 poppins: ['"Poppins"', 'sans-serif'],
             },
+            height: {
+                '112': '28rem',
+                '128': '32rem',
+            },
+            borderRadius: {
+                '4xl': '2rem',
+                '5xl': '2.5rem',
+                '6xl': '3rem',
+            }
         },
     },
 }

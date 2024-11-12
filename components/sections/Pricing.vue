@@ -1,68 +1,114 @@
 <script setup lang="ts">
 
+function showAlert() {
+  alert("TODO: modal tonen")
+}
 </script>
 
 <template>
-  <section class="bg-yellow-200 flex items-center justify-center">
+  <section id="pricing" class="bg-secondary flex items-center justify-center">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Pakketten</h2>
-      <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-        <!-- Basic Plan -->
-        <div class="bg-gray-100 rounded-lg p-8 flex flex-col w-full md:w-1/3">
-          <h3 class="text-2xl font-bold mb-4">Partyanimal</h3>
-          <p class="text-4xl font-bold mb-6"><span class="text-sm font-normal">v.a.</span> €250</p>
+      <div class="flex flex-wrap gap-4 justify-center items-center content-center min-h-screen">
+        <!-- Main pakketten-->
+        <div class="flex w-full gap-20 justify-center items-center">
+          <!-- Partyanimal pakket -->
+          <div class="card h-112">
+            <div class="card-content">
+              <h3 class="header">{{ $t('pricing_headers[0]') }}</h3>
+              <div class="text-xl">{{ $t('pricing_content[0]') }}</div>
+              <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
+            </div>
+            <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{ $t('pricing_button_book_now') }}</button>
+          </div>
 
-          <ul class="mb-8">
-            <li class="mb-2">2 uur entertainment</li>
-            <li class="mb-2">6 kids</li>
-            <li class="mb-2">één workshop</li>
-          </ul>
-          <button
-              class="mt-auto bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300">
-            Kies pakket
-          </button>
+          <!-- Zen pakket -->
+          <div class="card h-128 -mt-44">
+            <div class="card-content">
+              <h3 class="header">{{ $t('pricing_headers[1]') }}</h3>
+              <div class="text-xl">{{ $t('pricing_content[1]') }}</div>
+              <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
+            </div>
+            <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{ $t('pricing_button_book_now') }}</button>
+          </div>
+
+          <!-- B2B Pakket -->
+          <div class="card h-112">
+            <div class="card-content">
+              <h3 class="header">{{ $t('pricing_headers[2]') }}</h3>
+              <div class="text-xl">{{ $t('pricing_content[2]') }}</div>
+              <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
+            </div>
+            <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{ $t('pricing_button_book_now') }}</button>
+          </div>
         </div>
 
-        <!-- Pro Plan (Most Prominent) -->
-        <div
-            class="bg-blue-500 text-white rounded-lg p-8 flex flex-col w-full md:w-1/3 transform md:scale-110 z-10 shadow-lg">
-          <h3 class="text-2xl font-bold mb-4">Zen</h3>
-          <p class="text-4xl font-bold mb-6"><span class="text-sm font-normal">v.a.</span> €745</p>
-          <ul class="mb-8">
-            <li class="mb-2">Volledige decoratie</li>
-            <li class="mb-2">2 uur entertainment</li>
-            <li class="mb-2">6 kids</li>
-            <li class="mb-2">één georganiseerde activiteit</li>
-            <li class="mb-2">glittertattoos</li>
-          </ul>
-          <button
-              class="mt-auto bg-white text-blue-500 py-2 px-6 rounded-full hover:bg-blue-100 transition duration-300">
-            Kies pakket
-          </button>
+        <!-- niet gevonden wat je zocht?-->
+        <div class="small-card -mt-14">
+          <p class="font-thin font-monograss text-secondary py-3">{{ $t('pricing_not_found') }}</p>
+          <button class="w-5/6 text-lg button" @click="showAlert">{{ $t('pricing_button_specific') }}</button>
         </div>
-
-        <!-- Enterprise Plan -->
-        <div class="bg-gray-100 rounded-lg p-8 flex flex-col w-full md:w-1/3">
-          <h3 class="text-2xl font-bold mb-4">B2B</h3>
-          <p class="text-4xl font-bold mb-6"><span class="text-sm font-normal">v.a.</span> €300</p>
-          <ul class="mb-8">
-            <li class="mb-2">2 uur entertainment</li>
-            <li class="mb-2">knutseltafel</li>
-            <li class="mb-2">6 kids inbegrepen</li>
-          </ul>
-          <button
-              class="mt-auto bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300">
-            Kies pakket
-          </button>
-        </div>
-      </div>
-      <div class="justify-center items-center content-center">
-        <p>Niet gevonden wat je zocht?</p>
       </div>
     </div>
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.card {
+  @apply
+  flex
+  flex-col
+  w-1/3
+  max-w-[300px]
+  max-h-[524px]
+  bg-primary
+  rounded-6xl
+  text-center
+  items-center
+  p-8
+  ;
+  filter: drop-shadow(0px 4px 2px #00000040)
+}
 
+.small-card {
+  @apply flex flex-col h-[130px] w-[300px] justify-center text-center items-center bg-primary rounded-6xl p-4;
+  filter: drop-shadow(0px 4px 2px #00000040)
+}
+
+.card-content {
+  @apply
+  text-secondary
+  font-monograss
+  flex-grow
+  items-center
+  text-center
+  content-center
+  pt-20
+  ;
+}
+
+.header {
+  @apply text-[40px] mb-4 px-7;
+  line-height: 43.16px;
+  font-weight: 500;
+}
+
+.button {
+  @apply
+  font-monograss
+  bg-secondary
+  text-primary
+  pt-2
+  pb-1
+  mt-2
+  rounded-full
+  hover:bg-primary
+  hover:text-secondary
+  leading-7
+  transition
+  duration-300
+  ;
+}
 </style>
