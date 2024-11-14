@@ -6,8 +6,9 @@
           @mouseenter="hoverIndex = index"
           @mouseleave="hoverIndex = -1"
           :class="[
-          'w-4 h-4 rounded-full border-2 cursor-pointer relative border-text',
-          currentSection === index ? 'bg-accent2 border-text' : 'bg-transparent border-text',
+          currentSection === 0 ? 'bg-secondary hover:bg-accent2' : 'bg-primary',
+          currentSection === index ? 'bg-primary border-text' : 'bg-transparent border-text',
+          'w-4 h-4 rounded-full border-2 cursor-pointer relative border-text hover:bg-accent2',
         ]"
       >
         <Tooltip :text="section.name" :visible="hoverIndex === index"/>
