@@ -22,6 +22,10 @@ module.exports = {
                 '4xl': '2rem',
                 '5xl': '2.5rem',
                 '6xl': '3rem',
+            },
+            dropShadow: {
+                'xl': '0px 4px 2px #00000040',
+                '2xl': '0px 6px 10px #00000060',
             }
         },
     },

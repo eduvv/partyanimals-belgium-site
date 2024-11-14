@@ -12,7 +12,7 @@ function showAlert() {
         <!-- Main pakketten-->
         <div class="flex w-full gap-20 justify-center items-center">
           <!-- Partyanimal pakket -->
-          <div class="card h-112">
+          <div class="card card-transform h-112">
             <div class="card-content">
               <h3 class="header">{{ $t('pricing_headers[0]') }}</h3>
               <div class="text-xl">{{ $t('pricing_content[0]') }}</div>
@@ -23,7 +23,7 @@ function showAlert() {
           </div>
 
           <!-- Zen pakket -->
-          <div class="card h-128 -mt-44">
+          <div class="card card-transform h-128 -mt-44">
             <div class="card-content">
               <h3 class="header">{{ $t('pricing_headers[1]') }}</h3>
               <div class="text-xl">{{ $t('pricing_content[1]') }}</div>
@@ -34,7 +34,7 @@ function showAlert() {
           </div>
 
           <!-- B2B Pakket -->
-          <div class="card h-112">
+          <div class="card card-transform h-112">
             <div class="card-content">
               <h3 class="header">{{ $t('pricing_headers[2]') }}</h3>
               <div class="text-xl">{{ $t('pricing_content[2]') }}</div>
@@ -46,7 +46,7 @@ function showAlert() {
         </div>
 
         <!-- niet gevonden wat je zocht?-->
-        <div class="small-card -mt-14">
+        <div class="small-card card-transform -mt-14">
           <p class="font-thin font-monograss text-secondary py-3">{{ $t('pricing_not_found') }}</p>
           <button class="w-5/6 text-lg button" @click="showAlert">{{ $t('pricing_button_specific') }}</button>
         </div>
@@ -68,13 +68,32 @@ function showAlert() {
   text-center
   items-center
   p-8
+  drop-shadow-xl
   ;
-  filter: drop-shadow(0px 4px 2px #00000040)
+}
+
+.card-transform {
+  @apply
+  transform
+  duration-300
+  hover:scale-105
+  hover:drop-shadow-2xl;
 }
 
 .small-card {
-  @apply flex flex-col h-[130px] w-[300px] justify-center text-center items-center bg-primary rounded-6xl p-4;
-  filter: drop-shadow(0px 4px 2px #00000040)
+  @apply
+  flex
+  flex-col
+  h-[130px]
+  w-[300px]
+  justify-center
+  text-center
+  items-center
+  bg-primary
+  rounded-6xl
+  p-4
+  drop-shadow-xl
+  ;
 }
 
 .card-content {
