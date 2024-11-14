@@ -22,7 +22,9 @@
 
           <div class="flex flex-col mb-8">
             <label for="input-name" class="block">Pakket</label>
-            <input id="input-name" class="block rounded-full resize-none placeholder-primary font-monograss placeholder:font-monograss placeholder:text-center" placeholder="Partyanimal pakket [TODO]"/>
+            <input id="input-name"
+                   class="block rounded-full resize-none placeholder-primary font-monograss placeholder:font-monograss placeholder:text-center"
+                   placeholder="Partyanimal pakket [TODO]"/>
           </div>
 
         </div>
@@ -31,7 +33,8 @@
         <div class="flex flex-col mt-auto">
           <div class="flex flex-col mb-8">
             <label for="input-name" class="block">Bericht</label>
-            <textarea id="input-name" class="block rounded-4xl resize-none h-44 bg-secondary p-4 font-poppins text-primary focus:outline-none"/>
+            <textarea id="input-name"
+                      class="block rounded-4xl resize-none h-44 bg-secondary p-4 font-poppins text-primary focus:outline-none"/>
           </div>
           <div class="flex items-center justify-center">
             <button class="w-56 p-4 text-xl button">aanvraag versturen</button>
@@ -91,6 +94,7 @@ div label {
   rounded-full
   hover:bg-primary
   hover:text-secondary
+  hover:shadow-button-border
   leading-7
   transition
   duration-300

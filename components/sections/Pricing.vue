@@ -19,7 +19,10 @@ function showAlert() {
               <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
             </div>
             <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
-            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{ $t('pricing_button_book_now') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{
+                $t('pricing_button_book_now')
+              }}
+            </button>
           </div>
 
           <!-- Zen pakket -->
@@ -30,7 +33,10 @@ function showAlert() {
               <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
             </div>
             <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
-            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{ $t('pricing_button_book_now') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{
+                $t('pricing_button_book_now')
+              }}
+            </button>
           </div>
 
           <!-- B2B Pakket -->
@@ -41,7 +47,10 @@ function showAlert() {
               <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
             </div>
             <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
-            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{ $t('pricing_button_book_now') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{
+                $t('pricing_button_book_now')
+              }}
+            </button>
           </div>
         </div>
 
@@ -125,6 +134,7 @@ function showAlert() {
   rounded-full
   hover:bg-primary
   hover:text-secondary
+  hover:shadow-button-border
   leading-7
   transition
   duration-300

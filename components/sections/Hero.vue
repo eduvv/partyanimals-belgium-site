@@ -12,7 +12,7 @@
           {{ $t('hero_sub') }}</p>
         <button
             onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});"
-            class="mt-5 bg-secondary text-primary py-2 px-6 rounded-full text-xl font-semibold font-monograss hover:bg-primary hover:text-secondary hover:border-secondary hover:border-2 duration-100">
+            class="button">
           {{ $t('hero_booknow') }}
         </button>
       </div>
@@ -22,7 +22,7 @@
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .blob {
   background-image: url(https://www.partyanimalsbelgium.be/wp-content/uploads/2024/04/Content-Britt-2-1-2048x1536.jpg);
   width: 380px;
@@ -43,5 +43,24 @@
   50% {
     border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
   }
+}
+
+.button {
+  @apply
+  mt-5
+  bg-secondary
+  text-primary
+  py-2
+  px-6
+  rounded-full
+  text-xl
+  font-semibold
+  font-monograss
+  transform
+  hover:bg-primary
+  hover:text-secondary
+  hover:shadow-button-border
+  duration-300
+  ;
 }
 </style>

@@ -26,6 +26,9 @@ module.exports = {
             dropShadow: {
                 'xl': '0px 4px 2px #00000040',
                 '2xl': '0px 6px 10px #00000060',
+            },
+            boxShadow: {
+                'button-border': 'inset 0px 0px 0px 2px theme("colors.secondary")',
             }
         },
     },
