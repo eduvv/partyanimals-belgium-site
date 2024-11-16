@@ -1,5 +1,17 @@
 <script setup lang="ts">
 
+import {PACK} from "~/config/packs";
+let selectedPackage = ref();
+let selectedSection = ref(0);
+const showModal = ref(false);
+
+function showPrice(pack: PACK, section: number) {
+  console.log(pack)
+  selectedPackage.value = pack;
+  selectedSection.value = section
+  showModal.value = true
+}
+
 function showAlert() {
   alert("TODO: modal tonen")
 }
@@ -8,6 +20,7 @@ function showAlert() {
 <template>
   <section id="pricing" class="bg-secondary flex items-center justify-center">
     <div class="max-w-6xl mx-auto px-4">
+      <PricingModal :show="showModal" :package="selectedPackage" :section="selectedSection" @update:show="showModal = $event"/>
       <div class="flex flex-wrap gap-4 justify-center items-center content-center min-h-screen">
         <!-- Main pakketten-->
         <div class="flex w-full gap-20 justify-center items-center">
@@ -18,8 +31,8 @@ function showAlert() {
               <div class="text-xl">{{ $t('pricing_content[0]') }}</div>
               <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
             </div>
-            <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
-            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{
+            <button class="w-4/6 text-lg button" @click="showPrice(PACK.PARTYANIMAL, 1)">{{ $t('pricing_button_more_info') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showPrice(PACK.PARTYANIMAL,2)">{{
                 $t('pricing_button_book_now')
               }}
             </button>
@@ -32,8 +45,8 @@ function showAlert() {
               <div class="text-xl">{{ $t('pricing_content[1]') }}</div>
               <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
             </div>
-            <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
-            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{
+            <button class="w-4/6 text-lg button" @click="showPrice(PACK.ZEN,1)">{{ $t('pricing_button_more_info') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showPrice(PACK.ZEN,2)">{{
                 $t('pricing_button_book_now')
               }}
             </button>
@@ -46,8 +59,8 @@ function showAlert() {
               <div class="text-xl">{{ $t('pricing_content[2]') }}</div>
               <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
             </div>
-            <button class="w-4/6 text-lg button" @click="showAlert">{{ $t('pricing_button_more_info') }}</button>
-            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showAlert">{{
+            <button class="w-4/6 text-lg button" @click="showPrice(PACK.B2B,1)">{{ $t('pricing_button_more_info') }}</button>
+            <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showPrice(PACK.B2B,2)">{{
                 $t('pricing_button_book_now')
               }}
             </button>
