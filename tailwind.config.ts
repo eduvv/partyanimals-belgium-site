@@ -29,6 +29,7 @@ module.exports = {
             },
             boxShadow: {
                 'button-border': 'inset 0px 0px 0px 2px theme("colors.secondary")',
+                'button-select': '0px 0px 0px 2px theme("colors.accent2"), inset 0px 0px 0px 3px theme("colors.primary")'
             }
         },
     },

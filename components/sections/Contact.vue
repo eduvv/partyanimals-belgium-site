@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <section class="flex flex-col items-center justify-center bg-secondary px-12">
+  <section id="contact" class="flex flex-col items-center justify-center bg-secondary px-12">
     <h2 class="font-monograss text-4xl text-primary">Contact formulier</h2>
     <div class="contact-container">
       <!-- inner container -->

@@ -29,6 +29,91 @@ export default defineI18nConfig(() => ({
             pricing_button_book_now: 'boek nu',
             pricing_button_specific: 'Specifieke aanvraag',
             pricing_not_found: 'Niet gevonden wat je zocht?',
+            pricing_modal: {
+                PARTYANIMAL: {
+                    title: "Partyanimal Pakket",
+                    sub_title: [
+                        "Jeej jij hebt gekozen voor het Partyanimal Pakket!",
+                        "Bij dit pakket zorgen we voor:"
+                    ],
+                    list1: [
+                        "2 uur entertainment",
+                        "6 kids",
+                        "één workshop",
+                        "Spelmateriaal in thema",
+                    ],
+                    price: [
+                        "vanaf 250 euro",
+                        "excl. verplaatsingskosten"
+                    ],
+                    extra_info: [
+                        "Boek je graag extra’s zoals een extra uur, extra kids of extra activiteit, kan dat zeker.",
+                        "Nadat je aanvraag is ingediend, bekijken we zo snel mogelijk of jouw gekozen dag beschikbaar is."
+                    ],
+                    contact_form:{
+                        title: "Contact formulier"
+                    }
+                },
+                ZEN: {
+                    title: "Zen Pakket",
+                    sub_title: [
+                        "Jeej jij hebt gekozen voor het Zen Pakket!",
+                        "Bij dit pakket zorgen we voor:"
+                    ],
+                    list1: [
+                        "2 uur entertainment",
+                        "6 kids",
+                        "Volledige decoratie",
+                        "één workshop",
+                        "Glittertattoos",
+                        "Spel en speelmateriaal in thema",
+                    ],
+                    price: [
+                        "vanaf 745 euro",
+                        "excl. verplaatsingskosten"
+                    ],
+                    extra_info: [
+                        "Boek je graag extra’s zoals een extra uur, extra kids of extra activiteit, kan dat zeker.",
+                        "Nadat je aanvraag is ingediend, bekijken we zo snel mogelijk of jouw gekozen dag beschikbaar is.",
+                        "Daarnaast zorgen we voor de volledige aankleding:",
+                    ],
+                    list2: [
+                        "Ballonnenboog",
+                        "Ballonnen Torentjes in thema",
+                        "Gezellige picknick tafeltjes inc decoratie",
+                        "Limonade of snoepbar",
+                        "Bordjes, bekertjes, servetten, vlaggetjes, losse ballonnen.",
+                        "Cadeautje voor de jarige",
+                        "Traktatie voor alle kindjes",
+                    ],
+                    extra_info2:  "Het enigste wat je moet doorgeven is het gewenste kleurenpallet / thema",
+                    contact_form:{
+                        title: "Contact formulier"
+                    }
+                },
+                B2B: {
+                    title: "B2B Pakket",
+                    sub_title: [
+                        "Jeej jij hebt gekozen voor het B2B Pakket!",
+                        "Bij dit pakket zorgen we voor:"
+                    ],
+                    list1: [
+                        "2 uur entertainment",
+                        "Knutseltafel voor 20 kids",
+                    ],
+                    price: [
+                        "vanaf 360 euro",
+                        "excl. verplaatsingskosten"
+                    ],
+                    extra_info: [
+                        "Boek je graag extra’s zoals een extra uur, extra kids of extra activiteit, kan dat zeker.",
+                        "Nadat je aanvraag is ingediend, bekijken we zo snel mogelijk of jouw gekozen dag beschikbaar is."
+                    ],
+                    contact_form:{
+                        title: "Contact formulier"
+                    }
+                }
+            }
         },
         en: {
             hero_belgium: "Belgium",

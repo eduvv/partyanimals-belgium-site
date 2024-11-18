@@ -2,7 +2,7 @@
 
 import {PACK} from "~/config/packs";
 let selectedPackage = ref();
-let selectedSection = ref(0);
+let selectedSection = ref(1);
 const showModal = ref(false);
 
 function showPrice(pack: PACK, section: number) {
@@ -11,16 +11,12 @@ function showPrice(pack: PACK, section: number) {
   selectedSection.value = section
   showModal.value = true
 }
-
-function showAlert() {
-  alert("TODO: modal tonen")
-}
 </script>
 
 <template>
   <section id="pricing" class="bg-secondary flex items-center justify-center">
     <div class="max-w-6xl mx-auto px-4">
-      <PricingModal :show="showModal" :package="selectedPackage" :section="selectedSection" @update:show="showModal = $event"/>
+      <PricingModal v-if="showModal" :package="selectedPackage" :section="selectedSection" @update:show="showModal = $event"/>
       <div class="flex flex-wrap gap-4 justify-center items-center content-center min-h-screen">
         <!-- Main pakketten-->
         <div class="flex w-full gap-20 justify-center items-center">
@@ -70,7 +66,7 @@ function showAlert() {
         <!-- niet gevonden wat je zocht?-->
         <div class="small-card card-transform -mt-14">
           <p class="font-thin font-monograss text-secondary py-3">{{ $t('pricing_not_found') }}</p>
-          <button class="w-5/6 text-lg button" @click="showAlert">{{ $t('pricing_button_specific') }}</button>
+          <button class="w-5/6 text-lg button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">{{ $t('pricing_button_specific') }}</button>
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
 <template>
   <div class="inline-block">
     <!-- Modal -->
-    <div
-        v-if="show"
-        class="fixed inset-0 flex items-center justify-center bg-primary bg-opacity-30 backdrop-blur-md z-10"
-        @click.self="closeModal">
-      <!--  Modal container-->
-      <div class="container relative flex-col">
+    <div class="fixed inset-0 flex items-center justify-center bg-primary bg-opacity-30 backdrop-blur-md z-10"
+         @click.self="closeModal">
+      <!--  Modal container -->
+      <div class="container relative">
+        <!--  Modal close button -->
         <div class="flex absolute top-4 right-4">
           <button @click="closeModal" class="flex text-white hover:text-accent2 mr-10 mt-5 text-4xl">
             <svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -16,38 +15,23 @@
           </button>
         </div>
 
-        <!-- Content -->
-        <div class="my-16 mx-28 opacity-100 text-secondary overflow-hidden">
-          <h1 class="font-monograss text-4xl">{{ PACK[package][0].toUpperCase() + PACK[package].substring(1).toLowerCase() }} pakket</h1>
-          <div class="font-poppins text-lg">
+        <!-- Modal Content -->
+        <div class="mt-16 mb-8 mx-28 flex flex-col flex-grow opacity-100 text-secondary overflow-hidden">
+          <h1 v-if="currentSection !== 3" class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }}</h1>
+          <h1 v-else class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }} - {{ $tm(`${translationPrefix}.contact_form.title`) }}</h1>
+          <!-- Section 1 -->
+          <div v-if="currentSection == 1">
+            <PricingInfo @continue="currentSection++" :package="props.package"/>
+          </div>
 
-            <p><strong>{{section == 1 ? "meer info.." : "boek nu.."}}</strong></p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
-            </p>
+          <!-- Section 2 -->
+          <div v-if="currentSection == 2" class="text-lg flex flex-col flex-grow">
+            <PricingBookNow class="flex flex-col flex-grow" @continue="currentSection++" :package="props.package"/>
+          </div>
+
+          <!-- Section 3 -->
+          <div v-if="currentSection == 3">
+            <PricingContact :package="props.package"/>
           </div>
         </div>
       </div>
@@ -59,12 +43,12 @@
 import {defineProps, defineEmits, watch} from "vue";
 import {PACK} from "~/config/packs";
 
-// Props
+
 const props = defineProps({
-  show: {
-    type: Boolean,
-    required: true,
-  },
+  // show: {
+  //   type: Boolean,
+  //   required: true,
+  // },
   section: {
     type: Number,
     required: false,
@@ -77,11 +61,16 @@ const props = defineProps({
   },
 });
 
+let currentSection = ref(props.section)
+const selectedPackage = computed(() => PACK[props.package]);
+const translationPrefix = computed(() => `pricing_modal.${selectedPackage.value}`);
+
 // Emits
 const emit = defineEmits(["update:show", "select"]);
 
 // Methods
 const closeModal = () => {
+  currentSection.value = 1;
   emit("update:show", false); // Notify parent to close modal
 };
 
@@ -95,14 +84,32 @@ const submitAction = () => {
 .container {
   @apply
   flex
+  flex-col
   items-stretch
   bg-primary
   opacity-80
   max-w-[1344px]
-  max-h-[802px]
+  min-h-[802px]
   w-full
-  h-full
+  h-auto
   rounded-[5rem]
+  ;
+}
+
+.button {
+  @apply
+  font-monograss
+  bg-secondary
+  text-primary
+  pt-2
+  pb-1
+  rounded-full
+  hover:bg-primary
+  hover:text-secondary
+  hover:shadow-button-border
+  leading-7
+  transition
+  duration-300
   ;
 }
 </style>
