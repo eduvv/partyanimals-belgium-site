@@ -20,21 +20,21 @@
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="flex w-40 font-poppins justify-end">Uur</span>
             <label
-                v-for="number in 5"
-                :key="number"
+                v-for="value in 5"
+                :key="value"
                 :class=" [
-              selectedUur === number ? 'shadow-button-select': '',
-              number === 6 ? 'button-arrow' : 'button-number'
+              selectedUur === value ? 'shadow-button-select': '',
+              value === 6 ? 'button-arrow' : 'button-number'
           ] "
             >
               <input
                   type="radio"
                   name="options"
-                  :value="number"
+                  :value="value"
                   class="hidden"
                   v-model="selectedUur"
               />
-              {{ number }}
+              {{ value }}
             </label>
           </div>
 
@@ -82,17 +82,17 @@
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="flex w-40 font-poppins justify-end">Pinjata in thema</span>
             <label
-                v-for="(number,index) in 2"
+                v-for="(number, index) in 2"
                 :key="number"
                 :class=" [
-              selectedPinjata === number ? 'shadow-button-select': '',
+              selectedPinjata === index ? 'shadow-button-select': '',
               number === 6 ? 'button-arrow' : 'button-number'
           ] "
             >
               <input
                   type="radio"
                   name="options"
-                  :value="number"
+                  :value="index"
                   class="hidden"
                   v-model="selectedPinjata"
               />
@@ -109,14 +109,14 @@
                 v-for="(number,index) in 3"
                 :key="number"
                 :class=" [
-              selectedWorkshop === number ? 'shadow-button-select': '',
+              selectedWorkshop === index ? 'shadow-button-select': '',
               number === 6 ? 'button-arrow' : 'button-number'
           ] "
             >
               <input
                   type="radio"
                   name="options"
-                  :value="number"
+                  :value="index"
                   class="hidden"
                   v-model="selectedWorkshop"
               />
@@ -131,20 +131,39 @@
                 v-for="(number,index) in 3"
                 :key="number"
                 :class=" [
-              selectedPartyComfort === number ? 'shadow-button-select': '',
+              selectedPartyComfort === index ? 'shadow-button-select': '',
               number === 6 ? 'button-arrow' : 'button-number'
           ] "
             >
               <input
                   type="radio"
                   name="options"
-                  :value="number"
+                  :value="index"
                   class="hidden"
                   v-model="selectedPartyComfort"
               />
               {{ index }}
             </label>
           </div>
+        </div>
+      </div>
+
+      <!-- Price Calculation -->
+      <div class="mt-1 w-full flex flex-col justify-end items-end self-end text-right font-monograss text-md">
+        <!-- pricing box -->
+        <div class="w-[30rem]">
+          <p>{{ $tm(`${translationPrefix}.title`) }} pakket € {{ basePrice[props.package] }}</p>
+          <p>{{ selectedUur }} extra uren ({{ selectedUur }} x 30 euro) € {{ priceUur }}</p>
+          <p>{{ selectedKids }} extra kids ({{ selectedKids }} x 30 euro) € {{ priceKids }}</p>
+          <p>{{ selectedPinjata }} extra pinjata ({{ selectedPinjata }} x 40 euro) € {{ pricePinjata }}</p>
+          <p>{{ selectedWorkshop }} extra workshop ({{ selectedWorkshop }} x 40 euro) € {{ priceWorkshop }}</p>
+          <p>{{ selectedPartyComfort }} extra party comfort pakket ({{ selectedPartyComfort }} x 40 euro) €
+            {{ pricePartyComfort }}</p>
+          <hr class="w-full border-t border-secondary my-2">
+          <p class="font-monograss text-lg">incl. 21% BTW € {{ btw }}</p>
+          <hr class="w-full border-t border-secondary my-2">
+          <p class="font-monograss text-xl font-bold">€ {{ totalInclBtw }}</p>
+          <p class="font-monograss text-xs text-secondary">excl. verplaatsingskosten</p>
         </div>
       </div>
     </div>
@@ -167,19 +186,72 @@ const props = defineProps({
   },
 });
 
-const selectedPackage = computed(() => PACK[props.package]);
-const translationPrefix = computed(() => `pricing_modal.${selectedPackage.value}`);
+const selectedPackage: ComputedRef<String> = computed(() => PACK[props.package]);
+const translationPrefix: ComputedRef<String> = computed(() => `pricing_modal.${selectedPackage.value}`);
 
-
-const selectedUur = ref(0);
-const selectedKids = ref(0);
+const selectedUur = ref(1);
+const selectedKids = ref(1);
 const selectedPinjata = ref(0);
 const selectedWorkshop = ref(0);
 const selectedPartyComfort = ref(0);
 
-const emit = defineEmits(["continue"]);
+const basePrice: Record<PACK, number> = {
+  [PACK.PARTYANIMAL]: 250,
+  [PACK.ZEN]: 745,
+  [PACK.B2B]: 360
+}
+const priceUur = computed(() => selectedUur.value * 30)
+const priceKids = computed(() => selectedKids.value * 30)
+const pricePinjata = computed(() => selectedPinjata.value * 40)
+const priceWorkshop = computed(() => selectedWorkshop.value * 40)
+const pricePartyComfort = computed(() => selectedPartyComfort.value * 40)
+
+const totalExclBtw = computed(() => basePrice[props.package] + priceUur.value + priceKids.value + pricePinjata.value + priceWorkshop.value + pricePartyComfort.value)
+const btw = computed(() => Math.round((totalExclBtw.value * 0.21) * 100) / 100)
+const totalInclBtw = computed(() => totalExclBtw.value + btw.value)
+
+const emit = defineEmits(["continue", "update"]);
+
+watch(totalExclBtw, () => {
+  const priceObject = {
+    basePrice: basePrice[props.package],
+    selectedPackage: selectedPackage.value,
+    selectedUur: selectedUur.value,
+    selectedKids: selectedKids.value,
+    selectedPinjata: selectedPinjata.value,
+    selectedWorkshop: selectedWorkshop.value,
+    selectedPartyComfort: selectedPartyComfort.value,
+    priceUur: priceUur.value,
+    priceKids: priceKids.value,
+    pricePinjata: pricePinjata.value,
+    priceWorkshop: priceWorkshop.value,
+    pricePartyComfort: pricePartyComfort.value,
+    totalPrice: totalExclBtw.value,
+    btw: btw.value,
+    totalInclBtw: totalInclBtw.value
+  }
+  emit("update", priceObject)
+})
 
 function nextSection() {
+  const priceObject = {
+    basePrice: basePrice[props.package],
+    selectedPackage: selectedPackage.value,
+    selectedUur: selectedUur.value,
+    selectedKids: selectedKids.value,
+    selectedPinjata: selectedPinjata.value,
+    selectedWorkshop: selectedWorkshop.value,
+    selectedPartyComfort: selectedPartyComfort.value,
+    priceUur: priceUur.value,
+    priceKids: priceKids.value,
+    pricePinjata: pricePinjata.value,
+    priceWorkshop: priceWorkshop.value,
+    pricePartyComfort: pricePartyComfort.value,
+    totalPrice: totalExclBtw.value,
+    btw: btw.value,
+    totalInclBtw: totalInclBtw.value
+  }
+  emit("update", priceObject)
   emit("continue")
 }
 </script>

@@ -17,8 +17,11 @@
 
         <!-- Modal Content -->
         <div class="mt-16 mb-8 mx-28 flex flex-col flex-grow opacity-100 text-secondary overflow-hidden">
-          <h1 v-if="currentSection !== 3" class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }}</h1>
-          <h1 v-else class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }} - {{ $tm(`${translationPrefix}.contact_form.title`) }}</h1>
+          <h1 v-if="currentSection !== 3" class="font-monograss text-4xl mb-10">{{
+              $tm(`${translationPrefix}.title`)
+            }}</h1>
+          <h1 v-else class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }} -
+            {{ $tm(`${translationPrefix}.contact_form.title`) }}</h1>
           <!-- Section 1 -->
           <div v-if="currentSection == 1">
             <PricingInfo @continue="currentSection++" :package="props.package"/>
@@ -26,12 +29,13 @@
 
           <!-- Section 2 -->
           <div v-if="currentSection == 2" class="text-lg flex flex-col flex-grow">
-            <PricingBookNow class="flex flex-col flex-grow" @continue="currentSection++" :package="props.package"/>
+            <PricingBookNow class="flex flex-col flex-grow" @continue="currentSection++" @update="todo($event)"
+                            :package="props.package"/>
           </div>
 
           <!-- Section 3 -->
           <div v-if="currentSection == 3">
-            <PricingContact :package="props.package"/>
+            <PricingContact :price-data="priceData" :package="props.package"/>
           </div>
         </div>
       </div>
@@ -78,6 +82,12 @@ const submitAction = () => {
   emit("select", props.package); // Notify parent about selected package
   closeModal();
 };
+
+let priceData = ref()
+const todo = (event:Event) => {
+  priceData.value = event
+  console.log(event)
+}
 </script>
 
 <style scoped lang="scss">

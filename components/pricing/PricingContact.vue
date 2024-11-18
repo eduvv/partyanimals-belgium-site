@@ -1,5 +1,9 @@
 <template>
   <div class="flex flex-grow min-h-full">
+    TODO
+    <pre>
+      {{ priceData}}
+    </pre>
     <button @click="sendMail" class="button flex self-center mt-auto">aanvraag versturen</button>
   </div>
 </template>
@@ -14,6 +18,11 @@ const props = defineProps({
     required: true,
     default: PACK.PARTYANIMAL
   },
+  priceData: {
+    type: Object,
+    required: true,
+    default: {}
+  }
 });
 
 const selectedPackage = computed(() => PACK[props.package]);
