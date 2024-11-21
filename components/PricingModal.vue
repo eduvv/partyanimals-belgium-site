@@ -1,8 +1,6 @@
 <template>
-  <div class="inline-block">
     <!-- Modal -->
-    <div class="fixed inset-0 flex items-center justify-center bg-primary bg-opacity-30 backdrop-blur-md z-10"
-         @click.self="closeModal">
+    <div class="fixed inset-0 flex items-center justify-center bg-primary bg-opacity-30 backdrop-blur-md z-10" @click.self="closeModal">
       <!--  Modal container -->
       <div class="container relative">
         <!--  Modal close button -->
@@ -16,12 +14,9 @@
         </div>
 
         <!-- Modal Content -->
-        <div class="mt-16 mb-8 mx-28 flex flex-col flex-grow opacity-100 text-secondary overflow-hidden">
-          <h1 v-if="currentSection !== 3" class="font-monograss text-4xl mb-10">{{
-              $tm(`${translationPrefix}.title`)
-            }}</h1>
-          <h1 v-else class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }} -
-            {{ $tm(`${translationPrefix}.contact_form.title`) }}</h1>
+        <div class="mt-16 mb-8 mx-28 flex flex-col flex-grow opacity-100 text-secondary overflow-hidden h-full">
+          <h1 v-if="currentSection !== 3" class="font-monograss text-4xl mb-10">{{$tm(`${translationPrefix}.title`) }}</h1>
+          <h1 v-else class="font-monograss text-4xl mb-10">{{ $tm(`${translationPrefix}.title`) }} - {{ $tm(`${translationPrefix}.contact_form.title`) }}</h1>
           <!-- Section 1 -->
           <div v-if="currentSection == 1">
             <PricingInfo @continue="currentSection++" :package="props.package"/>
@@ -34,13 +29,12 @@
           </div>
 
           <!-- Section 3 -->
-          <div v-if="currentSection == 3">
+          <div v-if="currentSection == 3" class="flex flex-col flex-grow">
             <PricingContact :price-data="priceData" :package="props.package"/>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">

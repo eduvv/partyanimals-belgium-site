@@ -26,7 +26,6 @@
                    class="block rounded-full resize-none placeholder-primary font-monograss placeholder:font-monograss placeholder:text-center"
                    placeholder="Partyanimal pakket [TODO]"/>
           </div>
-
         </div>
 
         <!-- submit button -->
