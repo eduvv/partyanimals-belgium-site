@@ -42,17 +42,13 @@
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="flex w-40 font-poppins justify-end">Kids</span>
             <label
-                v-for="value in 7"
+                v-for="(value, index) in 7"
                 :key="value"
-                :class=" [
-              selectedKids === value ? 'shadow-button-select': '',
-              value === 6 ? 'button-arrow' : 'button-number'
-          ] "
-            >
+                :class="[selectedKids === value ? 'shadow-button-select': '',value === 6 ? 'button-arrow' : 'button-number']">
               <input
                   type="radio"
                   name="options"
-                  :value="value"
+                  :value="value !== 7 ? value : 25"
                   class="hidden"
                   v-model="selectedKids"
                   :disabled="value === 6"
