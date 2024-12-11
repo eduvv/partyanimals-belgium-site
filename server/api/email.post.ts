@@ -22,8 +22,11 @@ export default defineEventHandler(async (event) => {
             from: `Excited User <mailgun@${domain}>`,
             to: ["info@edito.dev", "edwardvanvlasselaer@hotmail.com"],
             subject: "Hello",
-            text: `Testing some Mailgun awesomeness! text ${messageText}`,
-            html: `<h1>Testing some Mailgun awesomeness! html</h1>${messageText}`
+            text: `Testing some Mailgun awesomeness! \n\nDetails:\n${JSON.stringify(body, null, 2)}`,
+            html: `
+            <h1>Testing some Mailgun awesomeness!</h1>
+            <pre>${JSON.stringify(body, null, 2)}</pre>
+        `
         });
 
         console.log('Email sent successfully:', msg);
