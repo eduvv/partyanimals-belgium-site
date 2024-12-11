@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     console.log("sending email with body:", body);
 
-    // Ensure body is converted to string if it's an object
     const messageText = typeof body === 'object' ? JSON.stringify(body) : String(body);
 
     const mailgun = new Mailgun(FormData);
@@ -18,6 +17,8 @@ export default defineEventHandler(async (event) => {
     });
 
     try {
+        console.log("MAILGUN_API_KEY:", process.env.MAILGUN_API_KEY ? "exists" : "missing");
+        console.log("MAILGUN_DOMAIN:", process.env.MAILGUN_DOMAIN ? "exists" : "missing");
         console.log("Domain:", domain, typeof domain);
         console.log("API Key:", apiKey, typeof apiKey);
         console.log("Body:", body, typeof body);
@@ -25,21 +26,21 @@ export default defineEventHandler(async (event) => {
             from: `Excited User <mailgun@${domain}>`,
             to: ["info@edito.dev", "edwardvanvlasselaer@hotmail.com"],
             subject: "Hello",
-            text: `Testing some Mailgun awesomeness!\n\nDetails:\n${JSON.stringify(body, null, 2)}`,
+            text: `Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`,
             html: `
         <h1>Testing some Mailgun awesomeness!</h1>
-        <pre>${JSON.stringify(body, null, 2)}</pre>
+        <pre>${messageText}</pre>
     `
         });
 
         const msg = await mg.messages.create(String(domain), {
-            from: `Excited User <mailgun@${domain}>`,
+            from: `Excited User <mailgun@${String(domain)}>`,
             to: ["info@edito.dev", "edwardvanvlasselaer@hotmail.com"],
             subject: "Hello",
-            text: `Testing some Mailgun awesomeness! \n\nDetails:\n${JSON.stringify(body, null, 2)}`,
+            text: `Testing some Mailgun awesomeness! \n\nDetails:\n${messageText}`,
             html: `
             <h1>Testing some Mailgun awesomeness!</h1>
-            <pre>${JSON.stringify(body, null, 2)}</pre>
+            <pre>${messageText}</pre>
         `
         });
 
