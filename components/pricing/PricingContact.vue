@@ -111,6 +111,10 @@ const translationPrefix = computed(() => `pricing_modal.${selectedPackage.value}
 
 function sendMail() {
   console.log("Send mail clicked!");
+  $fetch("/api/email", {
+    method: "POST",
+    body: props.priceData
+  })
 }
 </script>
 

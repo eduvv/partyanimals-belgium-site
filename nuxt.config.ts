@@ -38,5 +38,8 @@ export default defineNuxtConfig({
                 usePolling: true
             }
         }
+    },
+    nitro: {
+        preset: 'netlify'
     }
 })
