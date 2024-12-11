@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';
-import FormData from 'form-data';
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
@@ -16,8 +15,8 @@ export default defineEventHandler(async (event) => {
         });
     }
 
-    // Construct the email payload
-    const formData = new FormData();
+    // Manually construct form data as a URL-encoded string
+    const formData = new URLSearchParams();
     formData.append('from', `Excited User <mailgun@${domain}>`);
     formData.append('to', 'info@edito.dev, edwardvanvlasselaer@hotmail.com');
     formData.append('subject', 'Hello');
@@ -33,8 +32,9 @@ export default defineEventHandler(async (event) => {
             method: 'POST',
             headers: {
                 Authorization: `Basic ${Buffer.from(`api:${apiKey}`).toString('base64')}`,
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: formData,
+            body: formData.toString(),
         });
 
         if (!response.ok) {
