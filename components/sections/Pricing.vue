@@ -19,7 +19,7 @@ function showPrice(pack: PACK, section: number) {
       <PricingModal v-if="showModal" :package="selectedPackage" :section="selectedSection" @update:show="showModal = $event"/>
       <div class="flex flex-wrap gap-4 justify-center items-center content-center min-h-screen">
         <!-- Main pakketten-->
-        <div class="flex w-full gap-20 justify-center items-center flex-wrap">
+        <div class="flex w-full gap-20 justify-center items-center">
           <!-- Partyanimal pakket -->
           <div class="card card-transform h-112">
             <div class="card-content">

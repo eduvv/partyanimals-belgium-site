@@ -18,7 +18,21 @@ export default defineEventHandler(async (event) => {
     });
 
     try {
-        const msg = await mg.messages.create(domain, {
+        console.log("Domain:", domain, typeof domain);
+        console.log("API Key:", apiKey, typeof apiKey);
+        console.log("Body:", body, typeof body);
+        console.log("Message Payload:", {
+            from: `Excited User <mailgun@${domain}>`,
+            to: ["info@edito.dev", "edwardvanvlasselaer@hotmail.com"],
+            subject: "Hello",
+            text: `Testing some Mailgun awesomeness!\n\nDetails:\n${JSON.stringify(body, null, 2)}`,
+            html: `
+        <h1>Testing some Mailgun awesomeness!</h1>
+        <pre>${JSON.stringify(body, null, 2)}</pre>
+    `
+        });
+
+        const msg = await mg.messages.create(String(domain), {
             from: `Excited User <mailgun@${domain}>`,
             to: ["info@edito.dev", "edwardvanvlasselaer@hotmail.com"],
             subject: "Hello",
