@@ -1,6 +1,5 @@
 import Mailgun from "mailgun.js";
 import { createError, defineEventHandler, readBody } from "h3"; // Nuxt's server utilities
-import URLSearchParams from "url-search-params-polyfill"; // To ensure compatibility with URLSearchParams in older environments
 
 export default defineEventHandler(async (event) => {
     // Parse the incoming request body
