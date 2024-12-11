@@ -1,6 +1,14 @@
 #[build]
 #edge_functions = "server/api"
 
-[[edge_functions]]
-function = "email"
-path = "/api/email"
+#[[edge_functions]]
+#function = "email"
+#path = "/api/email"
+
+[functions]
+# The directory where Nuxt will generate the serverless functions
+directory = ".netlify/functions"
+
+[functions."api-email"]
+# Force this function to be treated as a serverless function
+type = "server"
