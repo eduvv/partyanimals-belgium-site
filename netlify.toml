@@ -1,0 +1,6 @@
+#[build]
+#edge_functions = "server/api"
+
+[[edge_functions]]
+function = "email"
+path = "/api/email"
