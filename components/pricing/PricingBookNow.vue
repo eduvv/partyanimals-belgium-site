@@ -97,7 +97,7 @@
           </div>
         </div>
 
-        <div class="flex flex-col w-1/2 content-end">
+        <div class="flex flex-col w-auto items-end">
           <!-- Workshop buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="flex w-48 font-poppins justify-end">Workshop</span>
@@ -122,7 +122,10 @@
 
           <!-- Party comfort buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="flex w-48 font-poppins justify-end">Party comfort pakket</span>
+            <div>
+              <span class="flex font-poppins justify-end">Party comfort pakket</span>
+              <span class="flex font-poppins justify-end text-sm">(picknicktafeltjes en kussentjes voor de kids)</span>
+            </div>
             <label
                 v-for="(number,index) in 3"
                 :key="number"

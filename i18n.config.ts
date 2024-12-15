@@ -11,7 +11,7 @@ export default defineI18nConfig(() => ({
             about_content: [
                 'Ik ben Britt het gezicht achter Partyanimals Belgium, 25 jaar en enorm gepassioneerd om magische momenten voor kids te creëren.',
                 'Jarenlang ben ik al bezig met kids entertainment, Met Partyanimals zorg ik voor onvergetelijke en magische momenten voor iedereen.',
-                'Party Animals is gegroeid tot een team van getalenteerde en gepassioneerde entertainers om elk kind een onvergetelijke ervaring te geven.'
+                'Partyanimals is gegroeid tot een team van getalenteerde en gepassioneerde entertainers om elk kind een onvergetelijke ervaring te geven.'
             ],
 
             pricing_headers: [
