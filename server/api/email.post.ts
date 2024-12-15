@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     // Manually construct form data as a URL-encoded string
     const formData = new URLSearchParams();
     formData.append('from', `Excited User <mailgun@mail.edito.dev>`);
-    formData.append('to', `[${emailTo}]`);
+    formData.append('to', `${emailTo}`);
     formData.append('subject', 'Nieuwe aanvraag');
     formData.append('text', `Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
@@ -45,8 +45,8 @@ export default defineEventHandler(async (event) => {
 
         if (!response.ok) {
             const error = await response.text();
-            console.error('Mailgun API error: %o', error);
-            console.error('debug error: %O', error);
+            console.error('Mailgun API error: ', error);
+            console.error('Mailgun response: ', response);
             throw createError({
                 statusCode: 500,
                 message: `Mailgun API error: ${response.statusText}`,
