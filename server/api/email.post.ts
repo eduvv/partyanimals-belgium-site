@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
     console.log("data %O", formData);
 
     try {
-        const response = await fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
+        const response = await fetch(`https://api.eu.mailgun.net/v3/${domain}/messages`, {
             method: 'POST',
             headers: {
                 Authorization: `Basic ${Buffer.from(`api:${apiKey}`).toString('base64')}`,
