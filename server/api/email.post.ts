@@ -9,6 +9,10 @@ export default defineEventHandler(async (event) => {
     const domain = process.env.MAILGUN_DOMAIN;
     const emailFrom = process.env.MAILGUN_FROM;
     const emailTo = process.env.MAILGUN_TO;
+    console.log("apiKey", apiKey);
+    console.log("domain", domain);
+    console.log("emailFrom", emailFrom);
+    console.log("emailTo", emailTo);
 
     if (!apiKey || !domain) {
         throw createError({
@@ -28,6 +32,8 @@ export default defineEventHandler(async (event) => {
     <pre>${messageText}</pre>
   `);
 
+    console.log("data", formData.toString(), JSON.stringify(apiKey, null, 2));
+
     try {
         const response = await fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
             method: 'POST',
@@ -41,6 +47,7 @@ export default defineEventHandler(async (event) => {
         if (!response.ok) {
             const error = await response.text();
             console.error('Mailgun API error:', error);
+            console.error(JSON.stringify(error, null, 2));
             throw createError({
                 statusCode: 500,
                 message: `Mailgun API error: ${response.statusText}`,
@@ -49,7 +56,7 @@ export default defineEventHandler(async (event) => {
 
         const result = await response.json();
         console.log('Email sent successfully:', result);
-        return { success: true, message: 'Email sent successfully' };
+        return {success: true, message: 'Email sent successfully'};
     } catch (error) {
         console.error('Failed to send email:', error);
         throw createError({
