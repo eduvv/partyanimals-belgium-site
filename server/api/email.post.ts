@@ -47,8 +47,8 @@ export default defineEventHandler(async (event) => {
 
         if (!response.ok) {
             const error = await response.text();
-            console.error('Mailgun API error: %s', error);
-            console.error('debug error: %s', JSON.stringify(error, null, 2));
+            console.error('Mailgun API error: %o', error);
+            console.error('debug error: %O', error);
             throw createError({
                 statusCode: 500,
                 message: `Mailgun API error: ${response.statusText}`,
