@@ -9,10 +9,10 @@ export default defineEventHandler(async (event) => {
     const domain = process.env.MAILGUN_DOMAIN;
     const emailFrom = process.env.MAILGUN_FROM;
     const emailTo = process.env.MAILGUN_TO;
-    console.log("apiKey", apiKey);
-    console.log("domain", domain);
-    console.log("emailFrom", emailFrom);
-    console.log("emailTo", emailTo);
+    console.log("apiKey: %o", apiKey);
+    console.log("domain: %o", domain);
+    console.log("emailFrom: %o", emailFrom);
+    console.log("emailTo: $o", emailTo);
 
     if (!apiKey || !domain) {
         throw createError({
@@ -32,7 +32,8 @@ export default defineEventHandler(async (event) => {
     <pre>${messageText}</pre>
   `);
 
-    console.log("data %s", JSON.stringify(formData, null, 2));
+    console.log("data %o", formData);
+    console.log("data %O", formData);
 
     try {
         const response = await fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
