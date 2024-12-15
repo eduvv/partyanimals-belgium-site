@@ -4,7 +4,6 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     const messageText = typeof body === 'object' ? JSON.stringify(body) : String(body);
 
-    // Extract environment variables
     const apiKey = process.env.MAILGUN_API_KEY;
     const domain = process.env.MAILGUN_DOMAIN;
     const emailFrom = process.env.MAILGUN_FROM;
@@ -23,12 +22,12 @@ export default defineEventHandler(async (event) => {
 
     // Manually construct form data as a URL-encoded string
     const formData = new URLSearchParams();
-    formData.append('from', `Excited User <mailgun@mail.edito.dev>`);
+    formData.append('from', `Auto Mail <no-reply@mail.edito.dev>`);
     formData.append('to', `${emailTo}`);
     formData.append('subject', 'Nieuwe aanvraag');
-    formData.append('text', `Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
+    // formData.append('text', `text: Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
-    <h1>Testing some Mailgun awesomeness!</h1>
+    <h1>Nieuwe aanvraag gemaakt op ${new Date().toLocaleDateString()}!</h1>
     <pre>${messageText}</pre>
   `);
 
