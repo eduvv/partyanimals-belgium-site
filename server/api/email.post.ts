@@ -7,6 +7,8 @@ export default defineEventHandler(async (event) => {
     // Extract environment variables
     const apiKey = process.env.MAILGUN_API_KEY;
     const domain = process.env.MAILGUN_DOMAIN;
+    const emailFrom = process.env.MAILGUN_FROM;
+    const emailTo = process.env.MAILGUN_TO;
 
     if (!apiKey || !domain) {
         throw createError({
@@ -17,9 +19,9 @@ export default defineEventHandler(async (event) => {
 
     // Manually construct form data as a URL-encoded string
     const formData = new URLSearchParams();
-    formData.append('from', `Excited User <mailgun@${domain}>`);
-    formData.append('to', 'info@edito.dev, edwardvanvlasselaer@hotmail.com');
-    formData.append('subject', 'Hello');
+    formData.append('from', `Edito Auto Mail <${emailFrom}>`);
+    formData.append('to', `${emailTo}`);
+    formData.append('subject', 'Nieuwe aanvraag');
     formData.append('text', `Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
     <h1>Testing some Mailgun awesomeness!</h1>
@@ -27,7 +29,6 @@ export default defineEventHandler(async (event) => {
   `);
 
     try {
-        // Make the API request to Mailgun
         const response = await fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
             method: 'POST',
             headers: {
