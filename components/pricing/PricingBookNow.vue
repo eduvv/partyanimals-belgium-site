@@ -3,22 +3,22 @@
   <div class="text-lg flex flex-col flex-grow">
     <!-- grow container-->
     <div class="flex-grow">
-      <p class="font-monograss">{{ $tm(`${translationPrefix}.sub_title[0]`) }}</p>
-      <p class="font-monograss">{{ $tm(`${translationPrefix}.sub_title[1]`) }}</p>
+      <!--      <p class="font-poppins font-light">{{ $tm(`${translationPrefix}.sub_title[0]`) }}</p>-->
+      <!--      <p class="font-poppins font-light">{{ $tm(`${translationPrefix}.sub_title[1]`) }}</p>-->
       <ul class="ml-5 list-disc list-inside">
-        <li v-for="(item, index) in $tm(`${translationPrefix}.list1`)" :key="index" class="font-monograss">{{
+        <li v-for="(item, index) in $tm(`${translationPrefix}.list1`)" :key="index" class="font-poppins font-light">{{
             item
           }}
         </li>
       </ul>
 
       <h1 class="mt-10 text-3xl font-monograss">Extra's</h1>
-      <!-- Extras buttons   -->
+      <!-- Extras buttons -->
       <div class="flex flex-grow h-full w-full ">
         <div class="flex flex-col w-1/2">
           <!-- Uur buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="flex w-40 font-poppins justify-end">Uur</span>
+            <span class="button-text w-44">Uur</span>
             <label
                 v-for="value in 5"
                 :key="value"
@@ -40,7 +40,7 @@
 
           <!-- Kids buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="flex w-40 font-poppins justify-end">Kids</span>
+            <span class="button-text w-44">Kids</span>
             <label
                 v-for="(value, index) in 7"
                 :key="value"
@@ -76,7 +76,7 @@
 
           <!-- Pinjata buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="flex w-40 font-poppins justify-end">Pinjata in thema</span>
+            <span class="button-text w-44">Pinjata in thema</span>
             <label
                 v-for="(number, index) in 2"
                 :key="number"
@@ -100,7 +100,7 @@
         <div class="flex flex-col w-auto items-end">
           <!-- Workshop buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="flex w-48 font-poppins justify-end">Workshop</span>
+            <span class="button-text">Workshop</span>
             <label
                 v-for="(number,index) in 3"
                 :key="number"
@@ -123,11 +123,11 @@
           <!-- Party comfort buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <div>
-              <span class="flex font-poppins justify-end">Party comfort pakket</span>
-              <span class="flex font-poppins justify-end text-sm">(picknicktafeltjes en kussentjes voor de kids)</span>
+              <span class="button-text">Party comfort pakket</span>
+              <span class="flex font-poppins font-light text-xs justify-end ">(Picknick tafels & kussentjes)</span>
             </div>
             <label
-                v-for="(number,index) in 3"
+                v-for="(number,index) in 2"
                 :key="number"
                 :class=" [
               selectedPartyComfort === index ? 'shadow-button-select': '',
@@ -148,21 +148,48 @@
       </div>
 
       <!-- Price Calculation -->
-      <div class="mt-1 w-full flex flex-col justify-end items-end self-end text-right font-monograss text-md">
-        <!-- pricing box -->
-        <div class="w-[30rem]">
-          <p>{{ $tm(`${translationPrefix}.title`) }} pakket € {{ basePrice[props.package] }}</p>
-          <p>{{ selectedUur }} extra uren ({{ selectedUur }} x 30 euro) € {{ priceUur }}</p>
-          <p>{{ selectedKids }} extra kids ({{ selectedKids }} x 30 euro) € {{ priceKids }}</p>
-          <p>{{ selectedPinjata }} extra pinjata ({{ selectedPinjata }} x 40 euro) € {{ pricePinjata }}</p>
-          <p>{{ selectedWorkshop }} extra workshop ({{ selectedWorkshop }} x 40 euro) € {{ priceWorkshop }}</p>
-          <p>{{ selectedPartyComfort }} extra party comfort pakket ({{ selectedPartyComfort }} x 40 euro) €
-            {{ pricePartyComfort }}</p>
-          <hr class="w-full border-t border-secondary my-2">
-          <p class="font-monograss text-lg">incl. 21% BTW € {{ btw }}</p>
-          <hr class="w-full border-t border-secondary my-2">
-          <p class="font-monograss text-xl font-bold">€ {{ totalInclBtw }}</p>
-          <p class="font-monograss text-xs text-secondary">excl. verplaatsingskosten</p>
+      <div class="pricing-container">
+        <div class="pricing">
+          <div>
+            <span class="">{{ $tm(`${translationPrefix}.title`) }} pakket</span>
+            <span>€ {{ basePrice[props.package] }}</span>
+          </div>
+          <div>
+            <span>{{ selectedUur }} extra uren ({{ selectedUur }} x {{ prijsPerUur }} euro)</span>
+            <span>€ {{ priceUur }}</span>
+          </div>
+          <div>
+            <span>{{ selectedKids }} extra kids ({{ selectedKids }} x {{ prijsPerExtraKind }} euro)</span>
+            <span>€ {{ priceKids }}</span>
+          </div>
+          <div v-show="selectedPinjata">
+            <span>{{ selectedPinjata }} extra pinjata ({{ selectedPinjata }} x {{ prijsPerPinjata }} euro)</span>
+            <span>€ {{ pricePinjata }}</span>
+          </div>
+          <div v-show="selectedWorkshop">
+            <span>{{ selectedWorkshop }} extra workshop ({{ selectedWorkshop }} x {{ prijsPerWorkshop }} euro)</span>
+            <span>€ {{ priceWorkshop }}</span>
+          </div>
+          <div v-show="selectedPartyComfort">
+            <span>{{ selectedPartyComfort }} extra party comfort pakket ({{
+                selectedPartyComfort
+              }} x {{ prijsPerPartyComfort }} euro)</span>
+            <span>€ {{ pricePartyComfort }}</span>
+          </div>
+
+          <!-- subtotaal-->
+          <div class="pricing flex-col border-t border-b border-secondary my-3 py-1 text-sm">
+            <div>
+              <span class="align-text-bottom">subtotaal </span><span>€ {{ totalExclBtw.toFixed(2) }}</span>
+            </div>
+            <div>
+              <span class="align-text-bottom">incl. 21% BTW </span><span>€ {{ btw.toFixed(2) }}</span>
+            </div>
+          </div>
+
+          <!-- totaal -->
+          <p class="font-poppins text-xl font-normal">€ {{ totalInclBtw.toFixed(2) }}</p>
+          <p class="font-poppins text-xs text-secondary">excl. verplaatsingskosten (€0.95/km)</p>
         </div>
       </div>
     </div>
@@ -194,20 +221,26 @@ const selectedPinjata = ref(0);
 const selectedWorkshop = ref(0);
 const selectedPartyComfort = ref(0);
 
+const prijsPerUur = 60
+const prijsPerExtraKind = 14.95
+const prijsPerPinjata = 39.95
+const prijsPerWorkshop = 100
+const prijsPerPartyComfort = 120
+
 const basePrice: Record<PACK, number> = {
   [PACK.PARTYANIMAL]: 250,
   [PACK.ZEN]: 745,
   [PACK.B2B]: 360
 }
-const priceUur = computed(() => selectedUur.value * 30)
-const priceKids = computed(() => selectedKids.value * 30)
-const pricePinjata = computed(() => selectedPinjata.value * 40)
-const priceWorkshop = computed(() => selectedWorkshop.value * 40)
-const pricePartyComfort = computed(() => selectedPartyComfort.value * 40)
+const priceUur = computed(() => selectedUur.value * prijsPerUur)
+const priceKids = computed(() => selectedKids.value * prijsPerExtraKind)
+const pricePinjata = computed(() => selectedPinjata.value * prijsPerPinjata)
+const priceWorkshop = computed(() => selectedWorkshop.value * prijsPerWorkshop)
+const pricePartyComfort = computed(() => selectedPartyComfort.value * prijsPerPartyComfort)
 
 const totalExclBtw = computed(() => basePrice[props.package] + priceUur.value + priceKids.value + pricePinjata.value + priceWorkshop.value + pricePartyComfort.value)
 const btw = computed(() => Math.round((totalExclBtw.value * 0.21) * 100) / 100)
-const totalInclBtw = computed(() => totalExclBtw.value + btw.value)
+const totalInclBtw = computed(() => totalExclBtw.value + Number(btw.value))
 
 const emit = defineEmits(["continue", "update"]);
 
@@ -255,9 +288,37 @@ function nextSection() {
 }
 </script>
 <style scoped lang="scss">
+.pricing-container {
+  @apply
+  mt-1
+  w-full
+  flex
+  flex-col
+  justify-end
+  items-end
+  self-end
+  text-right
+  font-poppins
+  font-light
+  text-base;
+}
+
+.pricing {
+  @apply
+  w-[30rem]
+  [&>div]:flex
+  [&>div]:w-full
+  [&>div>span:first-child]:w-10/12
+  [&>div>span:last-child]:w-2/12
+  ;
+}
 
 .button-number {
   @apply flex text-xl font-thin items-center justify-center pt-1 w-9 h-9 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
+}
+
+.button-text {
+  @apply flex font-poppins font-light text-xl justify-end;
 }
 
 .button-arrow {

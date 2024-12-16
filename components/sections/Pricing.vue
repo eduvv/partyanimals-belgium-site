@@ -24,8 +24,8 @@ function showPrice(pack: PACK, section: number) {
           <div class="card card-transform h-112">
             <div class="card-content">
               <h3 class="header">{{ $t('pricing_headers[0]') }}</h3>
-              <div class="text-xl">{{ $t('pricing_content[0]') }}</div>
-              <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
+              <div class="text-xl font-poppins font-light">{{ $t('pricing_content[0]') }}</div>
+              <div class="text-xs font-poppins font-light">{{ $t('pricing_extra_cost') }}</div>
             </div>
             <button class="w-4/6 text-lg button" @click="showPrice(PACK.PARTYANIMAL, 1)">{{ $t('pricing_button_more_info') }}</button>
             <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showPrice(PACK.PARTYANIMAL,2)">{{
@@ -38,8 +38,8 @@ function showPrice(pack: PACK, section: number) {
           <div class="card card-transform h-128 -mt-44">
             <div class="card-content">
               <h3 class="header">{{ $t('pricing_headers[1]') }}</h3>
-              <div class="text-xl">{{ $t('pricing_content[1]') }}</div>
-              <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
+              <div class="text-xl font-poppins font-light">{{ $t('pricing_content[1]') }}</div>
+              <div class="text-xs font-poppins font-light">{{ $t('pricing_extra_cost') }}</div>
             </div>
             <button class="w-4/6 text-lg button" @click="showPrice(PACK.ZEN,1)">{{ $t('pricing_button_more_info') }}</button>
             <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showPrice(PACK.ZEN,2)">{{
@@ -52,8 +52,8 @@ function showPrice(pack: PACK, section: number) {
           <div class="card card-transform h-112">
             <div class="card-content">
               <h3 class="header">{{ $t('pricing_headers[2]') }}</h3>
-              <div class="text-xl">{{ $t('pricing_content[2]') }}</div>
-              <div class="text-xs font-thin">{{ $t('pricing_extra_cost') }}</div>
+              <div class="text-xl font-poppins font-light">{{ $t('pricing_content[2]') }}</div>
+              <div class="text-xs font-poppins font-light">{{ $t('pricing_extra_cost') }}</div>
             </div>
             <button class="w-4/6 text-lg button" @click="showPrice(PACK.B2B,1)">{{ $t('pricing_button_more_info') }}</button>
             <button class="mt-1 pt-4 w-5/6 text-2xl button" @click="showPrice(PACK.B2B,2)">{{

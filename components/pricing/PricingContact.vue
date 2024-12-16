@@ -20,8 +20,8 @@
             <div class="flex flex-row space-x-2">
               <input id="input-name"
                      class="rounded-full resize-none w-14"
-                     value="+32"
-                     disabled/>
+                     v-model="countryCode"
+                     @blur="validateInput"/>
               <input id="input-name" class="flex-grow rounded-full w-f"/>
             </div>
           </div>
@@ -34,7 +34,6 @@
         </div>
       </div>
 
-      <!-- Right Half -->
       <!-- Right Half -->
       <div class="flex flex-col w-1/2 border-red-500">
         <div class="flex flex-row space-x-2 mb-8">
@@ -82,7 +81,6 @@
           ></textarea>
         </div>
       </div>
-
     </div>
     <!-- Button -->
     <button @click="sendMail" class="button flex justify-center self-center mt-auto">aanvraag versturen</button>
@@ -116,6 +114,22 @@ function sendMail() {
     body: props.priceData
   })
 }
+
+const defaultCountryCode = '+32';
+const countryCode = ref(defaultCountryCode);
+
+watch(countryCode, (newVal) => {
+  if (!newVal.startsWith('+')) {
+    countryCode.value = '+' + newVal.replace(/^\+*/, '');
+  }
+});
+
+const validateInput = () => {
+  const isValid = /^\+\d+$/.test(countryCode.value);
+  if (!isValid) {
+    countryCode.value = defaultCountryCode;
+  }
+};
 </script>
 
 <style scoped lang="scss">
