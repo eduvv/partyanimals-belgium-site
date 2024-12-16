@@ -110,6 +110,8 @@
 import {defineEmits, defineProps} from "vue";
 import {PACK} from "~/config/packs";
 import PaginatedButtons from "~/components/pricing/PaginatedButtons.vue";
+import type {BookingData, EmailBody} from "~/server/api/EmailBody";
+import {b} from "unplugin-vue-router/types-DBiN4-4c";
 
 const props = defineProps({
   package: {
@@ -152,20 +154,35 @@ const totalInclBtw = computed(() => totalExclBtw.value + Number(btw.value))
 const emit = defineEmits(["continue", "update"]);
 
 watch(totalExclBtw, () => {
-  const priceObject = {
-    basePrice: basePrice[props.package],
-    selectedPackage: selectedPackage.value,
-    selectedUur: selectedUur.value,
-    selectedKids: selectedKids.value,
-    selectedPinjata: selectedPinjata.value,
-    selectedWorkshop: selectedWorkshop.value,
-    selectedPartyComfort: selectedPartyComfort.value,
-    priceUur: priceUur.value,
-    priceKids: priceKids.value,
-    pricePinjata: pricePinjata.value,
-    priceWorkshop: priceWorkshop.value,
-    pricePartyComfort: pricePartyComfort.value,
-    totalPrice: totalExclBtw.value,
+  const priceObject: BookingData = {
+    pack: props.package,
+    hours: {
+      amount: selectedUur.value,
+      pricePer: prijsPerUur,
+      priceTotal: priceUur.value
+    },
+    kids: {
+      amount: selectedKids.value,
+      pricePer: prijsPerExtraKind,
+      priceTotal: priceKids.value
+    },
+    pinjata: {
+      amount: selectedPinjata.value,
+      pricePer: prijsPerPinjata,
+      priceTotal: pricePinjata.value
+    },
+    workshop: {
+      amount: selectedWorkshop.value,
+      pricePer: prijsPerWorkshop,
+      priceTotal: priceWorkshop.value
+    },
+    comfort: {
+      amount: selectedPartyComfort.value,
+      pricePer: prijsPerPartyComfort,
+      priceTotal: pricePartyComfort.value
+    },
+
+    totalExclBtw: totalExclBtw.value,
     btw: btw.value,
     totalInclBtw: totalInclBtw.value
   }

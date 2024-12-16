@@ -129,29 +129,29 @@ function sendMail() {
     bookingData: {
       pack: props.priceData.pack,
       hours: {
-        amount: props.priceData.hours.amount,
-        pricePer: props.priceData.hours.pricePer,
-        priceTotal: props.priceData.hours.priceTotal
+        amount: props.priceData.hours?.amount,
+        pricePer: props.priceData.hours?.pricePer,
+        priceTotal: props.priceData.hours?.priceTotal
       },
       kids: {
-        amount: props.priceData.kids.amount,
-        pricePer: props.priceData.kids.pricePer,
-        priceTotal: props.priceData.kids.priceTotal
+        amount: props.priceData.kids?.amount,
+        pricePer: props.priceData.kids?.pricePer,
+        priceTotal: props.priceData.kids?.priceTotal
       },
       pinjata: {
-        amount: props.priceData.pinjata.amount,
-        pricePer: props.priceData.pinjata.pricePer,
-        priceTotal: props.priceData.pinjata.priceTotal
+        amount: props.priceData.pinjata?.amount,
+        pricePer: props.priceData.pinjata?.pricePer,
+        priceTotal: props.priceData.pinjata?.priceTotal
       },
       workshop: {
-        amount: props.priceData.workshop.amount,
-        pricePer: props.priceData.workshop.pricePer,
-        priceTotal: props.priceData.workshop.priceTotal
+        amount: props.priceData.workshop?.amount,
+        pricePer: props.priceData.workshop?.pricePer,
+        priceTotal: props.priceData.workshop?.priceTotal
       },
       comfort: {
-        amount: props.priceData.comfort.amount,
-        pricePer: props.priceData.comfort.pricePer,
-        priceTotal: props.priceData.comfort.priceTotal
+        amount: props.priceData.comfort?.amount,
+        pricePer: props.priceData.comfort?.pricePer,
+        priceTotal: props.priceData.comfort?.priceTotal
       },
       totalExclBtw: props.priceData.totalExclBtw,
       btw: props.priceData.btw,
