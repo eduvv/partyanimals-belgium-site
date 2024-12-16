@@ -29,8 +29,8 @@ export default defineEventHandler(async (event) => {
     // formData.append('text', `text: Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
     <h1>Nieuwe aanvraag gemaakt op ${new Date().toLocaleDateString()}!</h1>
-    <pre>${body.contactData}</pre>
-    <pre>${body.bookingData}</pre>
+    <pre>${JSON.stringify(body.contactData, null, 2)}</pre>
+    <pre>${JSON.stringify(body.bookingData, null, 2)}</pre>
   `);
 
     console.log("data: ", formData);
