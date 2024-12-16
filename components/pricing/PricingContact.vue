@@ -176,14 +176,12 @@ function sendMail() {
   $fetch("/api/email", {
     method: "POST",
     body
-  })
-      .then(response => {
-        //todo: toast ok
-        //todo close modal
-      })
-      .catch((error) => {
-        //todo toast error
-      });
+  }).then(response => {
+    //todo: toast ok
+    //todo close modal
+  }).catch((error) => {
+    //todo toast error
+  });
 }
 
 const defaultCountryCode = '+32';

@@ -14,6 +14,8 @@ export default defineEventHandler(async (event) => {
     console.log("emailFrom: ", emailFrom);
     console.log("emailTo: ", emailTo);
 
+    const subject = body.bookingData ? `Nieuwe aanvraag voor ${body.contactData.name}` : `Nieuw contact voor ${body.contactData.name}`
+
     if (!apiKey || !domain) {
         throw createError({
             statusCode: 500,
@@ -25,7 +27,7 @@ export default defineEventHandler(async (event) => {
     const formData = new URLSearchParams();
     formData.append('from', `Auto Mail <no-reply@mail.edito.dev>`);
     formData.append('to', `${emailTo}`);
-    formData.append('subject', `Nieuwe aanvraag voor ${body.contactData.name}`);
+    formData.append('subject', `${subject}`);
     // formData.append('text', `text: Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
     <h1>Nieuwe aanvraag gemaakt op ${new Date().toLocaleDateString()}!</h1>

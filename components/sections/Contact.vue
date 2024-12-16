@@ -1,5 +1,31 @@
 <script setup lang="ts">
+import type {EmailBody} from "~/server/api/EmailBody";
 
+const cName = ref("")
+const cEmail = ref("")
+const cText = ref("")
+
+function sendMail() {
+
+  const body: EmailBody = {
+    contactData: {
+      name: cName.value,
+      email: cEmail.value,
+      extraInfo: cText.value
+    }
+  }
+
+  //todo validate before send
+  $fetch("/api/email", {
+    method: "POST",
+    body
+  }).then(response => {
+    //todo: toast ok
+    //todo close modal
+  }).catch((error) => {
+    //todo toast error
+  });
+}
 </script>
 
 <template>
@@ -36,7 +62,7 @@
                       class="block rounded-4xl resize-none h-44 bg-secondary p-4 font-poppins text-primary focus:outline-none"/>
           </div>
           <div class="flex items-center justify-center">
-            <button class="w-56 p-4 text-xl button">aanvraag versturen</button>
+            <button class="w-56 p-4 text-xl button" @click="sendMail">aanvraag versturen</button>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export type BookingData = {
 };
 
 export type EmailBody = {
-    bookingData: BookingData,
+    bookingData?: BookingData,
     contactData: {
         name: string,
         email: string,
