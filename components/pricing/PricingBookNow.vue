@@ -19,81 +19,19 @@
           <!-- Uur buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="button-text w-44">Uur</span>
-            <label
-                v-for="value in 5"
-                :key="value"
-                :class=" [
-              selectedUur === value ? 'shadow-button-select': '',
-              value === 6 ? 'button-arrow' : 'button-number'
-          ] "
-            >
-              <input
-                  type="radio"
-                  name="options"
-                  :value="value"
-                  class="hidden"
-                  v-model="selectedUur"
-              />
-              {{ value }}
-            </label>
+            <PaginatedButtons :min="1" :max="5" v-model="selectedUur"/>
           </div>
 
           <!-- Kids buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="button-text w-44">Kids</span>
-            <label
-                v-for="(value, index) in 7"
-                :key="value"
-                :class="[selectedKids === value ? 'shadow-button-select': '',value === 6 ? 'button-arrow' : 'button-number']">
-              <input
-                  type="radio"
-                  name="options"
-                  :value="value !== 7 ? value : 25"
-                  class="hidden"
-                  v-model="selectedKids"
-                  :disabled="value === 6"
-              />
-              <span v-if="value === 6">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="h-6 w-6"
-        >
-          <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 12h14m-7-7l7 7-7 7"
-          />
-        </svg>
-      </span>
-              <span v-else-if="value === 7">25</span>
-              <span v-else>{{ value }}</span>
-            </label>
+            <PaginatedButtons :min="1" :max="25" paginated v-model="selectedKids"/>
           </div>
 
           <!-- Pinjata buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="button-text w-44">Pinjata in thema</span>
-            <label
-                v-for="(number, index) in 2"
-                :key="number"
-                :class=" [
-              selectedPinjata === index ? 'shadow-button-select': '',
-              number === 6 ? 'button-arrow' : 'button-number'
-          ] "
-            >
-              <input
-                  type="radio"
-                  name="options"
-                  :value="index"
-                  class="hidden"
-                  v-model="selectedPinjata"
-              />
-              {{ index }}
-            </label>
+            <PaginatedButtons :min="0" :max="1" v-model="selectedPinjata"/>
           </div>
         </div>
 
@@ -101,23 +39,7 @@
           <!-- Workshop buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="button-text">Workshop</span>
-            <label
-                v-for="(number,index) in 3"
-                :key="number"
-                :class=" [
-              selectedWorkshop === index ? 'shadow-button-select': '',
-              number === 6 ? 'button-arrow' : 'button-number'
-          ] "
-            >
-              <input
-                  type="radio"
-                  name="options"
-                  :value="index"
-                  class="hidden"
-                  v-model="selectedWorkshop"
-              />
-              {{ index }}
-            </label>
+            <PaginatedButtons :min="0" :max="2" v-model="selectedWorkshop"/>
           </div>
 
           <!-- Party comfort buttons -->
@@ -126,23 +48,7 @@
               <span class="button-text">Party comfort pakket</span>
               <span class="flex font-poppins font-light text-xs justify-end ">(Picknick tafels & kussentjes)</span>
             </div>
-            <label
-                v-for="(number,index) in 2"
-                :key="number"
-                :class=" [
-              selectedPartyComfort === index ? 'shadow-button-select': '',
-              number === 6 ? 'button-arrow' : 'button-number'
-          ] "
-            >
-              <input
-                  type="radio"
-                  name="options"
-                  :value="index"
-                  class="hidden"
-                  v-model="selectedPartyComfort"
-              />
-              {{ index }}
-            </label>
+            <PaginatedButtons :min="0" :max="1" v-model="selectedPartyComfort"/>
           </div>
         </div>
       </div>
@@ -203,6 +109,7 @@
 <script setup lang="ts">
 import {defineEmits, defineProps} from "vue";
 import {PACK} from "~/config/packs";
+import PaginatedButtons from "~/components/pricing/PaginatedButtons.vue";
 
 const props = defineProps({
   package: {
