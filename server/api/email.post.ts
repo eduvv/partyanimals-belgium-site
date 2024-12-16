@@ -1,7 +1,8 @@
 import fetch from 'node-fetch';
+import {EmailBody} from "~/server/api/EmailBody";
 
 export default defineEventHandler(async (event) => {
-    const body = await readBody(event);
+    const body: EmailBody = await readBody(event);
     const messageText = typeof body === 'object' ? JSON.stringify(body) : String(body);
 
     const apiKey = process.env.MAILGUN_API_KEY;
@@ -24,11 +25,12 @@ export default defineEventHandler(async (event) => {
     const formData = new URLSearchParams();
     formData.append('from', `Auto Mail <no-reply@mail.edito.dev>`);
     formData.append('to', `${emailTo}`);
-    formData.append('subject', 'Nieuwe aanvraag');
+    formData.append('subject', `Nieuwe aanvraag voor ${body.contactData.name}`);
     // formData.append('text', `text: Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
     <h1>Nieuwe aanvraag gemaakt op ${new Date().toLocaleDateString()}!</h1>
-    <pre>${messageText}</pre>
+    <pre>${body.contactData}</pre>
+    <pre>${body.bookingData}</pre>
   `);
 
     console.log("data: ", formData);
