@@ -58,29 +58,29 @@
         <div class="pricing">
           <div>
             <span class="">{{ $tm(`${translationPrefix}.title`) }} pakket</span>
-            <span>€ {{ basePrice[props.package] }}</span>
+            <span>€ {{ basePrice[props.package].toFixed(2).replace(".00","") }}</span>
           </div>
           <div>
             <span>{{ selectedUur }} extra uren ({{ selectedUur }} x {{ prijsPerUur }} euro)</span>
-            <span>€ {{ priceUur }}</span>
+            <span>€ {{ priceUur.toFixed(2).replace(".00","") }}</span>
           </div>
           <div>
             <span>{{ selectedKids }} extra kids ({{ selectedKids }} x {{ prijsPerExtraKind }} euro)</span>
-            <span>€ {{ priceKids }}</span>
+            <span>€ {{ priceKids.toFixed(2).replace(".00","") }}</span>
           </div>
           <div v-show="selectedPinjata">
             <span>{{ selectedPinjata }} extra pinjata ({{ selectedPinjata }} x {{ prijsPerPinjata }} euro)</span>
-            <span>€ {{ pricePinjata }}</span>
+            <span>€ {{ pricePinjata.toFixed(2).replace(".00","") }}</span>
           </div>
           <div v-show="selectedWorkshop">
             <span>{{ selectedWorkshop }} extra workshop ({{ selectedWorkshop }} x {{ prijsPerWorkshop }} euro)</span>
-            <span>€ {{ priceWorkshop }}</span>
+            <span>€ {{ priceWorkshop.toFixed(2).replace(".00","") }}</span>
           </div>
           <div v-show="selectedPartyComfort">
             <span>{{ selectedPartyComfort }} extra party comfort pakket ({{
                 selectedPartyComfort
               }} x {{ prijsPerPartyComfort }} euro)</span>
-            <span>€ {{ pricePartyComfort }}</span>
+            <span>€ {{ pricePartyComfort.toFixed(2).replace(".00","") }}</span>
           </div>
 
           <!-- subtotaal-->
@@ -111,7 +111,6 @@ import {defineEmits, defineProps} from "vue";
 import {PACK} from "~/config/packs";
 import PaginatedButtons from "~/components/pricing/PaginatedButtons.vue";
 import type {BookingData, EmailBody} from "~/server/api/EmailBody";
-import {b} from "unplugin-vue-router/types-DBiN4-4c";
 
 const props = defineProps({
   package: {
@@ -153,7 +152,12 @@ const totalInclBtw = computed(() => totalExclBtw.value + Number(btw.value))
 
 const emit = defineEmits(["continue", "update"]);
 
-watch(totalExclBtw, () => {
+// watch(totalInclBtw, () => {
+//
+//   emit("update", priceObject)
+// })
+
+function nextSection() {
   const priceObject: BookingData = {
     pack: props.package,
     hours: {
@@ -183,27 +187,6 @@ watch(totalExclBtw, () => {
     },
 
     totalExclBtw: totalExclBtw.value,
-    btw: btw.value,
-    totalInclBtw: totalInclBtw.value
-  }
-  emit("update", priceObject)
-})
-
-function nextSection() {
-  const priceObject = {
-    basePrice: basePrice[props.package],
-    selectedPackage: selectedPackage.value,
-    selectedUur: selectedUur.value,
-    selectedKids: selectedKids.value,
-    selectedPinjata: selectedPinjata.value,
-    selectedWorkshop: selectedWorkshop.value,
-    selectedPartyComfort: selectedPartyComfort.value,
-    priceUur: priceUur.value,
-    priceKids: priceKids.value,
-    pricePinjata: pricePinjata.value,
-    priceWorkshop: priceWorkshop.value,
-    pricePartyComfort: pricePartyComfort.value,
-    totalPrice: totalExclBtw.value,
     btw: btw.value,
     totalInclBtw: totalInclBtw.value
   }

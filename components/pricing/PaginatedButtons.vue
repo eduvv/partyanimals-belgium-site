@@ -51,7 +51,6 @@
 import {ref, computed, watch, withDefaults} from "vue";
 
 interface Props {
-  label: string;
   min: number;
   max: number;
   paginated: boolean;

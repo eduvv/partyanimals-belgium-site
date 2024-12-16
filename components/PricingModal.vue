@@ -24,7 +24,7 @@
 
           <!-- Section 2 -->
           <div v-if="currentSection == 2" class="text-lg flex flex-col flex-grow">
-            <PricingBookNow class="flex flex-col flex-grow" @continue="currentSection++" @update="todo($event)"
+            <PricingBookNow class="flex flex-col flex-grow" @continue="currentSection++" @update="updatePriceData($event)"
                             :package="props.package"/>
           </div>
 
@@ -43,10 +43,6 @@ import {PACK} from "~/config/packs";
 
 
 const props = defineProps({
-  // show: {
-  //   type: Boolean,
-  //   required: true,
-  // },
   section: {
     type: Number,
     required: false,
@@ -78,9 +74,8 @@ const submitAction = () => {
 };
 
 let priceData = ref()
-const todo = (event:Event) => {
+const updatePriceData = (event:Event) => {
   priceData.value = event
-  console.log(event)
 }
 </script>
 

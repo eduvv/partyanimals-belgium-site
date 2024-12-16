@@ -6,7 +6,6 @@ let selectedSection = ref(1);
 const showModal = ref(false);
 
 function showPrice(pack: PACK, section: number) {
-  console.log(pack)
   selectedPackage.value = pack;
   selectedSection.value = section
   showModal.value = true
