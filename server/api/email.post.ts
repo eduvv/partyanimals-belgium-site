@@ -9,12 +9,10 @@ export default defineEventHandler(async (event) => {
     const domain = process.env.MAILGUN_DOMAIN;
     const emailFrom = process.env.MAILGUN_FROM;
     const emailTo = process.env.MAILGUN_TO;
-    console.log("apiKey: ", apiKey);
-    console.log("domain: ", domain);
-    console.log("emailFrom: ", emailFrom);
-    console.log("emailTo: ", emailTo);
 
-    const subject = body.bookingData ? `Nieuwe aanvraag voor ${body.contactData.name}` : `Nieuw contact voor ${body.contactData.name}`
+    const subject = body.bookingData
+        ? `Nieuwe aanvraag voor ${body.contactData.name}`
+        : `Nieuw contact voor ${body.contactData.name}`
 
     if (!apiKey || !domain) {
         throw createError({
@@ -23,19 +21,39 @@ export default defineEventHandler(async (event) => {
         });
     }
 
+    console.log("apiKey: ", apiKey);
+    console.log("domain: ", domain);
+    console.log("emailFrom: ", emailFrom);
+    console.log("emailTo: ", emailTo);
+    console.log("subject: ", subject);
+
+    const bookingBody= body.bookingData ? `<pre>
+    ${body.bookingData?.hours?.amount}x extra uur (€${body.bookingData?.hours?.pricePer}/uur): €${body.bookingData?.hours?.priceTotal}
+    ${body.bookingData?.kids?.amount}x extra kids (€${body.bookingData?.kids?.pricePer}/kid): €${body.bookingData?.kids?.priceTotal}
+    ${body.bookingData?.pinjata?.amount}x extra pinjata (€${body.bookingData?.pinjata?.pricePer}/pinjata): €${body.bookingData?.pinjata?.priceTotal}
+    ${body.bookingData?.workshop?.amount}x extra workshop (€${body.bookingData?.workshop?.pricePer}/workshop): €${body.bookingData?.workshop?.priceTotal}
+    ${body.bookingData?.comfort?.amount}x extra comfort pack (€${body.bookingData?.comfort?.pricePer}/pack): €${body.bookingData?.comfort?.priceTotal}
+    -------------------------------
+    excl btw: €${body.bookingData?.totalExclBtw}
+    btw: €${body.bookingData?.btw}
+    -------------------------------
+    totaal inclusief btw: €${body.bookingData?.totalInclBtw}
+    </pre>` : ''
+
     // Manually construct form data as a URL-encoded string
     const formData = new URLSearchParams();
-    formData.append('from', `Auto Mail <no-reply@mail.edito.dev>`);
+    formData.append('from', `Auto Mail <${emailFrom}>`);
     formData.append('to', `${emailTo}`);
     formData.append('subject', `${subject}`);
-    // formData.append('text', `text: Testing some Mailgun awesomeness!\n\nDetails:\n${messageText}`);
     formData.append('html', `
-    <h1>Nieuwe aanvraag gemaakt op ${new Date().toLocaleDateString()}!</h1>
+    <h1>Booking</h1>
+    ${bookingBody}
     <pre>${JSON.stringify(body.contactData, null, 2)}</pre>
-    <pre>${JSON.stringify(body.bookingData, null, 2)}</pre>
   `);
 
+    console.log("booking body: ", bookingBody);
     console.log("data: ", formData);
+
     try {
         const response = await fetch(`https://api.eu.mailgun.net/v3/${domain}/messages`, {
             method: 'POST',
