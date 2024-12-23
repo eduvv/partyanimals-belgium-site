@@ -1,8 +1,8 @@
 <!-- pages/index.vue -->
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen snap-container">
     <!-- Hero Section -->
-    <ScrollIndicator :sections="sections"/>
+    <ScrollIndicator :sections="sections" class="hidden sm:block" />
     <Confetti/>
     <SectionsHero class="min-h-screen"/>
 
@@ -16,10 +16,10 @@
 
     <!-- FAQ Section -->
 <!--    <WavyDivider color-top="bg-secondary" color-bottom="fill-green-200"></WavyDivider>-->
-    <SectionsFaq class="min-h-screen"/>
+    <SectionsFaq class=""/>
 
 <!--    <WavyDivider color-top="bg-green-200" color-bottom="fill-cyan-200"></WavyDivider>-->
-    <SectionsPartners class="h-32"/>
+    <SectionsPartners class="snap-center"/>
 
     <!-- Contact Section -->
 <!--    <WavyDivider color-top="bg-cyan-200" color-bottom="fill-orange-200"></WavyDivider>-->
@@ -41,7 +41,18 @@ const sections:Section[] = [
 </script>
 
 <style lang="scss">
-html {
-  scroll-behavior: smooth;
+.snap-container {
+  height: 80vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+}
+
+.snap-container > * {
+  scroll-snap-align: start;
+}
+
+.snap-center {
+  scroll-snap-align: center !important;
 }
 </style>

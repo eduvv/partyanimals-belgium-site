@@ -1,39 +1,11 @@
-<script setup lang="ts">
-import type {EmailBody} from "~/server/api/EmailBody";
 
-const cName = ref("")
-const cEmail = ref("")
-const cText = ref("")
-
-function sendMail() {
-
-  const body: EmailBody = {
-    contactData: {
-      name: cName.value,
-      email: cEmail.value,
-      extraInfo: cText.value
-    }
-  }
-
-  //todo validate before send
-  $fetch("/api/email", {
-    method: "POST",
-    body
-  }).then(response => {
-    //todo: toast ok
-    //todo close modal
-  }).catch((error) => {
-    //todo toast error
-  });
-}
-</script>
 
 <template>
-  <section id="contact" class="flex flex-col items-center justify-center bg-secondary px-12">
+  <section id="contact" class="flex flex-col items-center justify-center bg-secondary px-2 sm:px-12">
     <h2 class="font-monograss text-4xl text-primary">Contact formulier</h2>
     <div class="contact-container">
       <!-- inner container -->
-      <div class="flex flex-col w-full h-auto mt-20 mb-8 mx-24">
+      <div class="flex flex-col w-full h-auto mt-20 mb-8 mx-8 sm:mx-24">
         <!-- input fields -->
         <div class="flex-grow">
           <div class="flex flex-col mb-8">
@@ -70,6 +42,36 @@ function sendMail() {
   </section>
 </template>
 
+<script setup lang="ts">
+import type {EmailBody} from "~/server/api/EmailBody";
+
+const cName = ref("")
+const cEmail = ref("")
+const cText = ref("")
+
+function sendMail() {
+
+  const body: EmailBody = {
+    contactData: {
+      name: cName.value,
+      email: cEmail.value,
+      extraInfo: cText.value
+    }
+  }
+
+  //todo validate before send
+  $fetch("/api/email", {
+    method: "POST",
+    body
+  }).then(response => {
+    //todo: toast ok
+    //todo close modal
+  }).catch((error) => {
+    //todo toast error
+  });
+}
+</script>
+
 <style scoped lang="scss">
 .contact-container {
   @apply
@@ -81,8 +83,9 @@ function sendMail() {
   w-full
   my-20
   mx-20
-  ;
-  border-radius: 70px;
+  rounded-6xl
+  sm:rounded-[70px]
+  drop-shadow-xl;
 }
 
 div input {
@@ -93,7 +96,7 @@ div input {
   rounded-full
   bg-secondary
   focus:outline-none
-  w-[350px]
+  max-w-[350px]
   h-9
   px-3
   ;

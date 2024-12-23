@@ -42,14 +42,15 @@ const props = defineProps({
 let observer: IntersectionObserver
 
 const scrollToSection = (index) => {
-  const section = document.querySelectorAll('section')[index]
+  const sections = document.querySelectorAll('section');
+  const section = sections[index];
   if (section) {
-    window.scrollTo({
-      top: section.offsetTop,
-      behavior: 'smooth'
-    })
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   }
-}
+};
 
 onMounted(() => {
   const sectionElements = document.querySelectorAll('section')

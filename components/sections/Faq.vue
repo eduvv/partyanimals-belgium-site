@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <section class="flex flex-col justify-center bg-secondary px-12">
-    <h2 class="flex font-monograss text-4xl text-primary justify-center">Frequently Asked Questions</h2>
+  <section class="flex flex-col justify-center bg-secondary px-2 sm:px-12">
+    <h2 class="flex font-monograss text-4xl text-primary justify-center text-center">Frequently Asked Questions</h2>
     <div class="faq-container">
 
       <div class="faq-entry">
@@ -40,7 +40,7 @@
   flex
   flex-col
   self-center
-  max-w-[940px]
+  max-w-[58.75rem]
   w-full
   my-20
   mx-20;
