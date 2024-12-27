@@ -1,7 +1,7 @@
 <template>
   <section class="bg-secondary flex flex-col items-center justify-center">
     <!-- Title -->
-    <h2 class="text center mx-auto text-4xl font-bold font-monograss text-primary">Media en partners</h2>
+    <h2 class="text center mx-auto font-monograss text-4xl text-primary">Media en partners</h2>
 
     <!-- Logos section -->
     <div class="carousel-wrapper place-content-center pt-5">

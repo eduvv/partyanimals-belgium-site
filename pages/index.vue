@@ -1,6 +1,6 @@
 <!-- pages/index.vue -->
 <template>
-  <div class="min-h-screen snap-container">
+  <div class="min-h-screen bg-primary">
     <!-- Hero Section -->
     <ScrollIndicator :sections="sections" class="hidden sm:block" />
     <Confetti/>
@@ -41,18 +41,7 @@ const sections:Section[] = [
 </script>
 
 <style lang="scss">
-.snap-container {
-  height: 80vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always;
-}
-
-.snap-container > * {
-  scroll-snap-align: start;
-}
-
-.snap-center {
-  scroll-snap-align: center !important;
+html,body {
+  background-color: #D81559;
 }
 </style>

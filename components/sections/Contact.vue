@@ -1,5 +1,3 @@
-
-
 <template>
   <section id="contact" class="flex flex-col items-center justify-center bg-secondary px-2 sm:px-12">
     <h2 class="font-monograss text-4xl text-primary">Contact formulier</h2>
@@ -81,7 +79,7 @@ function sendMail() {
   max-w-[1393px]
   max-h-[742px]
   w-full
-  my-20
+  my-0 sm:my-20
   mx-20
   rounded-6xl
   sm:rounded-[70px]

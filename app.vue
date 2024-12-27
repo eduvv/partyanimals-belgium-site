@@ -4,8 +4,10 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 html, body {
+  @apply bg-primary;
+  height: 100lvh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;

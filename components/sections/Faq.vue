@@ -42,7 +42,7 @@
   self-center
   max-w-[58.75rem]
   w-full
-  my-20
+  mb-20 sm:my-20
   mx-20;
 }
 
