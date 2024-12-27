@@ -9,27 +9,27 @@
         <SplideTrack>
           <!-- Slides -->
           <SplideSlide>
-            <img
+            <NuxtImg
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Logo-HLN.svg/768px-Logo-HLN.svg.png"
-                alt="Company 1"
+                alt="Logo Het Laatste Nieuws"
             />
           </SplideSlide>
           <SplideSlide>
-            <img
+            <NuxtImg
                 src="https://upload.wikimedia.org/wikipedia/commons/8/82/KTN_Logo.JPG"
-                alt="Company 2"
+                alt="Logo Katoennatie"
             />
           </SplideSlide>
           <SplideSlide>
-            <img
+            <NuxtImg
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/HP_logo_1979.svg/320px-HP_logo_1979.svg.png"
-                alt="Company 3"
+                alt="Logo Hewlett Packard"
             />
           </SplideSlide>
           <SplideSlide>
-            <img
+            <NuxtImg
                 src="https://cdn.webshopapp.com/shops/305939/themes/173879/v/1201433/assets/logo.png"
-                alt="Company 4"
+                alt="Logo WOW Party"
             />
           </SplideSlide>
         </SplideTrack>
