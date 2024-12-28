@@ -15,11 +15,16 @@
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@tsparticles/engine": "^3.5.0",
     "@tsparticles/preset-confetti": "^3.1.0",
+    "@vesp/nuxt-fontawesome": "^1.1.0",
     "mailgun.js": "^10.2.4",
     "nuxt": "^3.12.4",
     "vue": "latest"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@types/node-fetch": "^2.6.12",
     "nuxt-splide": "^1.1.1",
     "sass": "^1.77.8"

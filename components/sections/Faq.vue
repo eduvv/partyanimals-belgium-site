@@ -77,7 +77,7 @@
   @apply
   text-secondary
   font-poppins
-  text-xl
+  text-sm sm:text-lg
   font-light;
 }
 </style>

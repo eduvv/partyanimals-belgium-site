@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: true},
-    modules: ["@nuxtjs/tailwindcss", '@nuxtjs/i18n', 'nuxt-splide', '@nuxt/image'],
+    modules: [
+      "@nuxtjs/tailwindcss",
+      '@nuxtjs/i18n',
+      'nuxt-splide',
+      '@nuxt/image',
+      '@vesp/nuxt-fontawesome'
+    ],
     alias: {
         '@config': '~/config'
     },
@@ -50,5 +56,10 @@ export default defineNuxtConfig({
                 format: 'webp'
             }
         }
-    }
+    },
+    fontawesome: {
+        icons: {
+            solid: ['envelope', 'phone', 'percent', 'map-marker-alt', 'file-pdf'],
+        },
+    },
 })
