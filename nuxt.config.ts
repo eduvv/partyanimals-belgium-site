@@ -53,13 +53,14 @@ export default defineNuxtConfig({
         }
     },
     nitro: {
-        // preset: 'netlify-edge',
+        preset: 'netlify-edge',
         serveStatic: true
     },
     image: {
         quality: 80,
         provider: 'ipx',
         ipx: {
+            dir: 'public',
             modifiers: {
                 format: 'webp'
             }
