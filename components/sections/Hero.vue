@@ -24,7 +24,7 @@
 
 <style scoped lang="scss">
 .blob {
-  background-image: url(https://www.partyanimalsbelgium.be/wp-content/uploads/2024/04/Content-Britt-2-1-2048x1536.jpg);
+  background-image: url('/images/hero.webp');
   width: 380px;
   height: 380px;
   background-size: cover;

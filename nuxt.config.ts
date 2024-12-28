@@ -3,11 +3,13 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: true},
     modules: [
-      "@nuxtjs/tailwindcss",
-      '@nuxtjs/i18n',
-      'nuxt-splide',
-      '@nuxt/image',
-      '@vesp/nuxt-fontawesome'
+        "@nuxtjs/tailwindcss",
+        '@nuxtjs/i18n',
+        'nuxt-splide',
+        '@nuxt/image',
+        '@vesp/nuxt-fontawesome',
+        "@nuxtjs/sitemap",
+        "@nuxtjs/robots"
     ],
     alias: {
         '@config': '~/config'
@@ -15,7 +17,9 @@ export default defineNuxtConfig({
     app: {
         head: {
             link: [
+                {rel: 'preload', href: 'https://fonts.cdnfonts.com/css/mono-grass', as: 'style', type: 'text/css'},
                 {rel: 'stylesheet', href: 'https://fonts.cdnfonts.com/css/mono-grass'},
+                {rel: 'preload', href: 'https://fonts.cdnfonts.com/css/poppins', as: 'style', type: 'text/css'},
                 {rel: 'stylesheet', href: 'https://fonts.cdnfonts.com/css/poppins'}
             ]
         }
@@ -43,10 +47,14 @@ export default defineNuxtConfig({
             watch: {
                 usePolling: true
             }
+        },
+        build: {
+            chunkSizeWarningLimit: 1500 // Raise chunk size warning for large builds
         }
     },
     nitro: {
-        preset: 'netlify-edge'
+        // preset: 'netlify-edge',
+        serveStatic: true
     },
     image: {
         quality: 80,
@@ -55,6 +63,22 @@ export default defineNuxtConfig({
             modifiers: {
                 format: 'webp'
             }
+        },
+        presets: {
+            carousel: {
+                modifiers: {
+                    format: 'webp',
+                    width: 1200,
+                    height: 800
+                }
+            }
+        },
+        screens: {
+            sm: 320,
+            md: 640,
+            lg: 1024,
+            xl: 1280,
+            '2xl': 1536
         }
     },
     fontawesome: {
@@ -62,4 +86,8 @@ export default defineNuxtConfig({
             solid: ['envelope', 'phone', 'percent', 'map-marker-alt', 'file-pdf'],
         },
     },
+    tailwindcss: {
+        viewer: false // Disable the Tailwind viewer in production
+    },
+
 })

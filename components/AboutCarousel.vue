@@ -6,16 +6,16 @@
   >
     <div style="position: relative">
       <SplideTrack>
-        <SplideSlide><NuxtImg src="/images/carousel/1.webp" alt="Vrouw gooit confetti in de lucht tijdens een feest, zittend op de vloer in een paarse broek." class="img-1"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/2.webp" alt="Kinderen knutselen onder een partytent met regenboogdecoratie en ballonnen." class="img-2"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/3.webp" alt="Vrouw en meisje buiten met kleurrijke stickers op hun gezichten." class="img-3"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/4.webp" alt="Vrouw toont roze verjaardagstaart in een tuin met zwembad." class="img-4"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/5.webp" alt="Lachende vrouw met glas roze wijn in een tuin." class="img-5"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/6.webp" alt="Vrouw en kind met ballon tijdens een binnenevenement." class="img-5"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/7.webp" alt="Vrouw met peuter bij paarse ballondecoratie en teddybeer." class="img-5"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/8.webp" alt="Kinderen spelen met bellen op een trampoline in de tuin." class="img-5"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/9.webp" alt="Lachende vrouw voor een roze achtergrond met een zeepbel op haar hoofd." class="img-5"/></SplideSlide>
-        <SplideSlide><NuxtImg src="/images/carousel/10.webp" alt="Vrouw poseert naast een kleurrijke ballonnenboog bij een feest." class="img-5"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/1.webp"   alt="Vrouw gooit confetti in de lucht tijdens een feest, zittend op de vloer in een paarse broek." class="img-1"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/2.webp"   alt="Kinderen knutselen onder een partytent met regenboogdecoratie en ballonnen." class="img-2"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/3.webp"  alt="Vrouw en meisje buiten met kleurrijke stickers op hun gezichten." class="img-3"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/4.webp"  alt="Vrouw toont roze verjaardagstaart in een tuin met zwembad." class="img-4"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/5.webp"   alt="Lachende vrouw met glas roze wijn in een tuin." class="img-5"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/6.webp"   alt="Vrouw en kind met ballon tijdens een binnenevenement." class="img-5"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/7.webp"   alt="Vrouw met peuter bij paarse ballondecoratie en teddybeer." class="img-5"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/8.webp"   alt="Kinderen spelen met bellen op een trampoline in de tuin." class="img-5"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/9.webp"   alt="Lachende vrouw voor een roze achtergrond met een zeepbel op haar hoofd." class="img-5"/></SplideSlide>
+        <SplideSlide><NuxtImg sizes="xs:420px md:1600px" src="/images/carousel/10.webp"  alt="Vrouw poseert naast een kleurrijke ballonnenboog bij een feest." class="img-5"/></SplideSlide>
       </SplideTrack>
     </div>
   </Splide>

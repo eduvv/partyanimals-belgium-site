@@ -74,6 +74,9 @@ const sections: Section[] = [
 
 <style lang="scss">
 html, body {
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
   background-color: #D81559;
 }
 a {
