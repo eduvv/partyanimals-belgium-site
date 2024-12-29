@@ -66,7 +66,7 @@ const emit = defineEmits(["update:modelValue"]);
 
 const currentPage = ref(props.min);
 const selectedValue = ref(props.modelValue);
-const visibleRange = 5;
+const visibleRange = 4;
 
 const visibleButtons = computed(() => {
   if (!props.paginated) {

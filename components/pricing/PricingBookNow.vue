@@ -19,13 +19,13 @@
           <!-- Uur buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="button-text w-44">Uur</span>
-            <PaginatedButtons :min="1" :max="5" v-model="selectedUur"/>
+            <PaginatedButtons :min="0" :max="5" v-model="selectedUur"/>
           </div>
 
           <!-- Kids buttons -->
           <div class="flex my-2 space-x-2 items-center w-fit">
             <span class="button-text w-44">Kids</span>
-            <PaginatedButtons :min="1" :max="25" paginated v-model="selectedKids"/>
+            <PaginatedButtons :min="0" :max="25" paginated v-model="selectedKids"/>
           </div>
 
           <!-- Pinjata buttons -->
