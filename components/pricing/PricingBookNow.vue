@@ -1,10 +1,8 @@
 <template>
   <!--  Section book now -->
-  <div class="text-lg flex flex-col flex-grow">
+  <div class="text-base sm:text-lg flex flex-col flex-grow">
     <!-- grow container-->
     <div class="flex-grow">
-      <!--      <p class="font-poppins font-light">{{ $tm(`${translationPrefix}.sub_title[0]`) }}</p>-->
-      <!--      <p class="font-poppins font-light">{{ $tm(`${translationPrefix}.sub_title[1]`) }}</p>-->
       <ul class="ml-5 list-disc list-inside">
         <li v-for="(item, index) in $tm(`${translationPrefix}.list1`)" :key="index" class="font-poppins font-light">{{
             item
@@ -12,41 +10,41 @@
         </li>
       </ul>
 
-      <h1 class="mt-10 text-3xl font-monograss">Extra's</h1>
+      <h1 class="mt-4 sm:mt-10 text-3xl font-monograss">Extra's</h1>
       <!-- Extras buttons -->
-      <div class="flex flex-grow h-full w-full ">
-        <div class="flex flex-col w-1/2">
+      <div class="flex flex-grow h-full w-full flex-col md:flex-row">
+        <div class="flex flex-col px-12 w-full md:w-1/2">
           <!-- Uur buttons -->
-          <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="button-text w-44">Uur</span>
+          <div class="flex my-0 sm:my-2 items-center justify-between w-full">
+            <span class="button-text flex-shrink-0">Uur</span>
             <PaginatedButtons :min="0" :max="5" v-model="selectedUur"/>
           </div>
 
           <!-- Kids buttons -->
-          <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="button-text w-44">Kids</span>
+          <div class="flex my-0 sm:my-2 items-center justify-between w-full">
+            <span class="button-text flex-shrink-0">Kids</span>
             <PaginatedButtons :min="0" :max="25" paginated v-model="selectedKids"/>
           </div>
 
           <!-- Pinjata buttons -->
-          <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="button-text w-44">Pinjata in thema</span>
+          <div class="flex my-0 sm:my-2 items-center justify-between w-full">
+            <span class="button-text flex-shrink-0">Pinjata in thema</span>
             <PaginatedButtons :min="0" :max="1" v-model="selectedPinjata"/>
           </div>
         </div>
 
-        <div class="flex flex-col w-auto items-end">
+        <div class="flex flex-col px-12 w-full md:w-auto">
           <!-- Workshop buttons -->
-          <div class="flex my-2 space-x-2 items-center w-fit">
-            <span class="button-text">Workshop</span>
+          <div class="flex my-0 sm:my-2 items-center justify-between w-full">
+            <span class="button-text flex-shrink-0">Workshop</span>
             <PaginatedButtons :min="0" :max="2" v-model="selectedWorkshop"/>
           </div>
 
           <!-- Party comfort buttons -->
-          <div class="flex my-2 space-x-2 items-center w-fit">
-            <div>
+          <div class="flex my-0 sm:my-2 items-center justify-between w-full">
+            <div class="flex flex-col flex-shrink-0">
               <span class="button-text">Party comfort pakket</span>
-              <span class="flex font-poppins font-light text-xs justify-end ">(Picknick tafels & kussentjes)</span>
+              <span class="flex font-poppins font-light text-xs">(Picknick tafels & kussentjes)</span>
             </div>
             <PaginatedButtons :min="0" :max="1" v-model="selectedPartyComfort"/>
           </div>
@@ -58,29 +56,29 @@
         <div class="pricing">
           <div>
             <span class="">{{ $tm(`${translationPrefix}.title`) }} pakket</span>
-            <span>€ {{ basePrice[props.package].toFixed(2).replace(".00","") }}</span>
+            <span>€ {{ basePrice[props.package].toFixed(2).replace(".00", "") }}</span>
           </div>
-          <div>
+          <div v-show="selectedUur">
             <span>{{ selectedUur }} extra uren ({{ selectedUur }} x {{ prijsPerUur }} euro)</span>
-            <span>€ {{ priceUur.toFixed(2).replace(".00","") }}</span>
+            <span>€ {{ priceUur.toFixed(2).replace(".00", "") }}</span>
           </div>
-          <div>
+          <div v-show="selectedKids">
             <span>{{ selectedKids }} extra kids ({{ selectedKids }} x {{ prijsPerExtraKind }} euro)</span>
-            <span>€ {{ priceKids.toFixed(2).replace(".00","") }}</span>
+            <span>€ {{ priceKids.toFixed(2).replace(".00", "") }}</span>
           </div>
           <div v-show="selectedPinjata">
             <span>{{ selectedPinjata }} extra pinjata ({{ selectedPinjata }} x {{ prijsPerPinjata }} euro)</span>
-            <span>€ {{ pricePinjata.toFixed(2).replace(".00","") }}</span>
+            <span>€ {{ pricePinjata.toFixed(2).replace(".00", "") }}</span>
           </div>
           <div v-show="selectedWorkshop">
             <span>{{ selectedWorkshop }} extra workshop ({{ selectedWorkshop }} x {{ prijsPerWorkshop }} euro)</span>
-            <span>€ {{ priceWorkshop.toFixed(2).replace(".00","") }}</span>
+            <span>€ {{ priceWorkshop.toFixed(2).replace(".00", "") }}</span>
           </div>
           <div v-show="selectedPartyComfort">
             <span>{{ selectedPartyComfort }} extra party comfort pakket ({{
                 selectedPartyComfort
               }} x {{ prijsPerPartyComfort }} euro)</span>
-            <span>€ {{ pricePartyComfort.toFixed(2).replace(".00","") }}</span>
+            <span>€ {{ pricePartyComfort.toFixed(2).replace(".00", "") }}</span>
           </div>
 
           <!-- subtotaal-->
@@ -123,8 +121,8 @@ const props = defineProps({
 const selectedPackage: ComputedRef<String> = computed(() => PACK[props.package]);
 const translationPrefix: ComputedRef<String> = computed(() => `pricing_modal.${selectedPackage.value}`);
 
-const selectedUur = ref(1);
-const selectedKids = ref(1);
+const selectedUur = ref(0);
+const selectedKids = ref(0);
 const selectedPinjata = ref(0);
 const selectedWorkshop = ref(0);
 const selectedPartyComfort = ref(0);
@@ -151,11 +149,6 @@ const btw = computed(() => Math.round((totalExclBtw.value * 0.21) * 100) / 100)
 const totalInclBtw = computed(() => totalExclBtw.value + Number(btw.value))
 
 const emit = defineEmits(["continue", "update"]);
-
-// watch(totalInclBtw, () => {
-//
-//   emit("update", priceObject)
-// })
 
 function nextSection() {
   const priceObject: BookingData = {
@@ -207,7 +200,8 @@ function nextSection() {
   text-right
   font-poppins
   font-light
-  text-base;
+  text-sm
+  sm:text-base;
 }
 
 .pricing {
@@ -221,11 +215,11 @@ function nextSection() {
 }
 
 .button-number {
-  @apply flex text-xl font-thin items-center justify-center pt-1 w-9 h-9 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
+  @apply flex text-xl font-thin items-center justify-center pt-1 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
 }
 
 .button-text {
-  @apply flex font-poppins font-light text-xl justify-end;
+  @apply flex font-poppins font-light text-sm sm:text-xl justify-end;
 }
 
 .button-arrow {

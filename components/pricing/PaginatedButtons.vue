@@ -97,11 +97,11 @@ watch(selectedValue, (newValue) => {
 
 <style scoped lang="scss">
 .button-number {
-  @apply flex text-xl font-thin items-center justify-center pt-1 w-9 h-9 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
+  @apply flex text-lg sm:text-xl font-thin items-center justify-center pt-1 w-7 h-7 sm:w-9 sm:h-9 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
 }
 
 .button-arrow {
-  @apply flex items-center justify-center pt-0 w-9 h-9 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
+  @apply flex items-center justify-center pt-0 w-7 h-7 sm:w-9 sm:h-9 bg-secondary text-primary font-monograss rounded-full cursor-pointer transition-all;
 }
 
 .button-arrow:disabled {

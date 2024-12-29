@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col flex-grow">
-    <div class="flex flex-col flex-grow font-poppins font-light text-lg text-secondary">
+    <div class="flex flex-col flex-grow font-poppins font-light text-base sm:text-lg text-secondary">
       <p>{{ $tm(`${translationPrefix}.sub_title[0]`) }}</p>
-      <p>{{ $tm(`${translationPrefix}.sub_title[1]`) }}</p>
-      <ul class="ml-5 list-disc list-inside">
+      <p class="hidden sm:flex">{{ $tm(`${translationPrefix}.sub_title[1]`) }}</p>
+      <ul class="ml-5 list-disc list-inside hidden sm:block">
         <li v-for="(item, index) in $tm(`${translationPrefix}.list1`)" :key="index">{{ item }}</li>
       </ul>
 
