@@ -7,23 +7,23 @@
         <div class="flex-grow">
           <div class="flex flex-col mb-3 sm:mb-8 max-w-full sm:max-w-[350px]">
             <label for="input-name" class="block">Naam en voornaam</label>
-            <input  id="input-name" class="block h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cName"/>
+            <input id="input-name" type="text" class="block h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cName" />
           </div>
 
           <div class="flex flex-col mb-3 sm:mb-8 max-w-full sm:max-w-[350px]">
             <label for="input-email" class="block">e-mail adres</label>
-            <input id="input-email" class="block h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cEmail"/>
+            <input id="input-email" type="email" class="block h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cEmail" />
           </div>
 
           <div class="flex flex-col mb-3 sm:mb-8 max-w-full sm:max-w-[350px]">
             <label for="input-phone" class="block">Telefoon</label>
             <div class="flex flex-row space-x-2">
               <input id="input-country-code"
+                     type="text"
                      class="rounded-full resize-none w-10 h-8 px-2 text-sm sm:w-14 sm:h-10 sm:px-3 sm:text-base"
                      v-model="countryCode"
-                     @blur="validateInput"/>
-              <input id="input-phone" class="flex-grow rounded-full w-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base"
-                     v-model="cPhone"/>
+                     @blur="validateInput" />
+              <input id="input-phone" type="tel" class="flex-grow rounded-full w-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cPhone" />
             </div>
           </div>
 
@@ -40,50 +40,44 @@
       <div class="flex flex-col w-full sm:w-1/2 border-red-500">
         <div class="flex flex-row space-x-2 mb-3 sm:mb-8 w-full">
           <div class="flex flex-col w-4/6 max-w-[250px] sm:max-w-[350px]">
-            <label for="street-name">Straatnaam</label>
-            <input id="street-name" class="rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base"
-                   v-model="cStreetName"/>
+            <label for="input-street-name">Straatnaam</label>
+            <input id="input-street-name" type="text" class="rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cStreetName" />
           </div>
           <div class="flex flex-col w-16">
-            <label for="house-number">Nr.</label>
-            <input id="house-number" class="rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base"
-                   v-model="cStreetNumber"/>
+            <label for="input-house-number">Nr.</label>
+            <input id="input-house-number" type="number" class="rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cStreetNumber" />
           </div>
           <div class="flex flex-col flex-grow w-1/6">
-            <label for="bus">Bus</label>
-            <input id="bus" class="rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cStreetBus"/>
+            <label for="input-bus">Bus</label>
+            <input id="input-bus" type="text" class="rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cStreetBus" />
           </div>
         </div>
 
         <div class="flex flex-row space-x-2 mb-3 sm:mb-8">
           <div class="flex flex-col w-2/3">
-            <label for="city" class="block text-sm sm:text-base">Gemeente</label>
-            <input id="city" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cCity"/>
+            <label for="input-city" class="block text-sm sm:text-base">Gemeente</label>
+            <input id="input-city" type="text" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cCity" />
           </div>
           <div class="flex flex-col w-1/3">
-            <label for="postal-code" class="block text-sm sm:text-base">Postcode</label>
-            <input id="postal-code" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base"
-                   v-model="cPostcode"/>
+            <label for="input-postal-code" class="block text-sm sm:text-base">Postcode</label>
+            <input id="input-postal-code" type="number" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cPostcode" />
           </div>
         </div>
 
         <div class="flex flex-row space-x-2 mb-3 sm:mb-8">
           <div class="flex flex-col w-1/3">
-            <label for="country" class="block">Land</label>
-            <input id="country" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base"
-                   v-model="cCountry"/>
+            <label for="input-country" class="block">Land</label>
+            <input id="input-country" type="text" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base" v-model="cCountry" />
           </div>
           <div class="flex flex-col flex-grow">
-            <label for="event-date" class="block">Datum feest</label>
-            <input id="event-date" type="date"
-                   class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base text-center"
-                   v-model="cDate"/>
+            <label for="input-event-date" class="block">Datum feest</label>
+            <input id="input-event-date" type="date" class="block rounded-full h-8 px-2 text-sm sm:h-10 sm:px-3 sm:text-base text-center" v-model="cDate" />
           </div>
         </div>
 
         <div class="flex flex-col mb-3 sm:mb-8">
-          <label for="extra-info">Extra info / vermelding thema feest voor kleurenpallet</label>
-          <textarea id="extra-info"
+          <label for="input-extra-info">Extra info / vermelding thema feest voor kleurenpallet</label>
+          <textarea id="input-extra-info"
                     class="block resize-none h-28 p-2 text-sm sm:h-44 sm:p-4 sm:text-base bg-secondary"
                     v-model="cExtraInfo"></textarea>
         </div>
