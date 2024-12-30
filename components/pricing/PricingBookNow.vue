@@ -219,7 +219,7 @@ function nextSection() {
 }
 
 .button-text {
-  @apply flex font-poppins font-light text-sm sm:text-xl justify-end;
+  @apply flex font-poppins font-light text-sm sm:text-xl justify-end mr-3;
 }
 
 .button-arrow {

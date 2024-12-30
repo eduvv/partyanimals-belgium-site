@@ -19,8 +19,7 @@
           Shop
         </button>
       </div>
-      <div class="hidden lg:mt-0 lg:col-span-5 lg:flex blob">
-      </div>
+      <div class="hidden lg:mt-0 lg:col-span-5 lg:flex blob"></div>
     </div>
   </section>
 </template>
@@ -37,6 +36,7 @@
   box-shadow: 0 5px 50px 0 #D81559 inset, 0 5px 100px 10px #F8E5EE;
   animation: animate 5s ease-in-out infinite;
   transition: all 1s ease-in-out;
+  @apply ml-0 xl:ml-16;
 }
 
 @keyframes animate {
