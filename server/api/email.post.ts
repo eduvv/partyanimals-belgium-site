@@ -3,7 +3,6 @@ import {EmailBody} from "~/server/api/EmailBody";
 
 export default defineEventHandler(async (event) => {
     const body: EmailBody = await readBody(event);
-    const messageText = typeof body === 'object' ? JSON.stringify(body) : String(body);
 
     const apiKey = process.env.MAILGUN_API_KEY;
     const domain = process.env.MAILGUN_DOMAIN;
@@ -40,6 +39,14 @@ export default defineEventHandler(async (event) => {
     totaal inclusief btw: €${body.bookingData?.totalInclBtw}
     </pre>` : ''
 
+    const contactBody = `<pre>
+    naam: ${body.contactData?.name}
+    email: ${body.contactData?.email}
+    bericht: ${body.contactData?.extraInfo}
+    pakket: ${body.contactData?._pakket}
+    </pre>`
+
+
     // Manually construct form data as a URL-encoded string
     const formData = new URLSearchParams();
     formData.append('from', `Auto Mail <${emailFrom}>`);
@@ -48,10 +55,12 @@ export default defineEventHandler(async (event) => {
     formData.append('html', `
     <h1>Booking</h1>
     ${bookingBody}
-    <pre>${JSON.stringify(body.contactData, null, 2)}</pre>
+    
+    ${contactBody}
   `);
 
     console.log("booking body: ", bookingBody);
+    console.log("contact body: ", contactBody);
     console.log("data: ", formData);
 
     try {
@@ -69,7 +78,7 @@ export default defineEventHandler(async (event) => {
             console.error('Mailgun API error: ', error);
             console.error('Mailgun response: ', response);
             throw createError({
-                statusCode: 500,
+                statusCode: response.status,
                 message: `Mailgun API error: ${response.statusText}`,
             });
         }

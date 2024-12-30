@@ -23,7 +23,7 @@
                 class="block rounded-full resize-none placeholder-primary font-monograss text-center"
                 v-model="cPackage"
             >
-              <option value="" disabled selected>Select a package</option>
+              <option value="" disabled selected>Kies een pakket</option>
               <option value="zen">Zen</option>
               <option value="partyanimals">Partyanimals</option>
               <option value="b2b">B2B</option>
@@ -50,6 +50,9 @@
 
 <script setup lang="ts">
 import type {EmailBody} from "~/server/api/EmailBody";
+import {useToast} from "vue-toast-notification";
+
+const $toast = useToast();
 
 const cName = ref("")
 const cEmail = ref("")
@@ -57,25 +60,42 @@ const cPackage = ref("")
 const cText = ref("")
 
 function sendMail() {
-
   const body: EmailBody = {
     contactData: {
       name: cName.value,
       email: cEmail.value,
-      extraInfo: cText.value
+      extraInfo: cText.value,
+      _pakket: cPackage.value
     }
   }
 
-  //todo validate before send
-  $fetch("/api/email", {
-    method: "POST",
-    body
-  }).then(response => {
-    //todo: toast ok
-    //todo close modal
-  }).catch((error) => {
-    //todo toast error
-  });
+  if (!cName.value || !cEmail.value || !cPackage.value || !cText.value) {
+    const missingFields = [];
+
+    if (!cName.value) missingFields.push('naam');
+    if (!cEmail.value) missingFields.push('e-mail');
+    if (!cPackage.value) missingFields.push('pakket');
+    if (!cText.value) missingFields.push('bericht');
+    const message = `Nog in te vullen: ${missingFields.join(', ')}.`;
+
+    $toast.warning(message, {position: 'top'});
+  } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(cEmail.value)) {
+    $toast.warning('ongeldig e-mail adres', {position: 'top'});
+  } else {
+    $fetch("/api/email", {
+      method: "POST",
+      body
+    }).then(response => {
+      $toast.success('Aanvraag succesvol verstuurd!', {position: 'top'});
+      cName.value = "";
+      cEmail.value = "";
+      cPackage.value = "";
+      cText.value = "";
+    }).catch((error) => {
+      console.error(error);
+      $toast.error('Er ging iets mis tijdens het versturen!', {position: 'top'});
+    });
+  }
 }
 </script>
 

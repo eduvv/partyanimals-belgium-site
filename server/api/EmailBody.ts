@@ -29,6 +29,7 @@ export type EmailBody = {
         partyDate?: string,
         extraInfo?: string,
         howDidYouFindMe?: string,
+        _pakket?: string
     },
 }
 
