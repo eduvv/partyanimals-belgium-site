@@ -129,6 +129,29 @@ div input, select {
   ;
 }
 
+div select {
+  @apply
+  text-primary
+  font-poppins
+  content-center
+  rounded-full
+  bg-secondary
+  focus:outline-none
+  max-w-[350px]
+  h-9
+  px-3
+  ;
+  appearance: none; /* Removes browser default styles */
+  -webkit-appearance: none; /* Safari-specific reset */
+  border: none; /* Ensures no browser-specific borders */
+  padding-right: 2rem; /* Adds space for the arrow */
+  position: relative;
+  background-position: right 1rem center; /* Position for custom arrow */
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0Q4MTU1OSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMTYuODQzIDEwLjIxMWMuMTA4LS4xNDEuMTU3LS4zLjE1Ny0uNDU2IDAtLjM4OS0uMzA2LS43NTUtLjc0OS0uNzU1aC04LjUwMWMtLjQ0NSAwLS43NS4zNjctLjc1Ljc1NSAwIC4xNTcuMDUuMzE2LjE1OS40NTcgMS4yMDMgMS41NTQgMy4yNTIgNC4xOTkgNC4yNTggNS40OTguMTQyLjE4NC4zNi4yOS41OTIuMjkuMjMgMCAuNDQ5LS4xMDcuNTkxLS4yOTEgMS4wMDItMS4yOTkgMy4wNDQtMy45NDUgNC4yNDMtNS40OTh6Ii8+PC9zdmc+');
+}
+
+
 
 div label {
   @apply
