@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col flex-grow h-full w-full">
     <!-- Content -->
-    <div class="flex flex-row flex-grow space-x-4">
+    <div class="flex flex-col sm:flex-row flex-grow space-x-4">
       <!-- Left Half -->
-      <div class="flex flex-col w-1/2 border-red-500">
+      <div class="flex flex-col w-full sm:w-1/2 border-red-500">
         <div class="flex-grow">
           <div class="flex flex-col mb-8 max-w-[350px]">
             <label for="input-name" class="block">Naam en voornaam</label>
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Right Half -->
-      <div class="flex flex-col w-1/2 border-red-500">
+      <div class="flex flex-col w-full sm:w-1/2 border-red-500">
         <div class="flex flex-row space-x-2 mb-8">
           <div class="flex flex-col w-4/6 max-w-[350px]">
             <label for="street-name">Straatnaam</label>
