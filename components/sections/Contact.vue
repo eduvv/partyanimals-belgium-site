@@ -8,19 +8,26 @@
         <div class="flex-grow">
           <div class="flex flex-col mb-8">
             <label for="input-name" class="block">Naam en voornaam</label>
-            <input id="input-name" class="block"/>
+            <input id="input-name" class="block" v-model="cName"/>
           </div>
 
           <div class="flex flex-col mb-8">
             <label for="input-name" class="block">e-mail adres</label>
-            <input id="input-name" class="block"/>
+            <input id="input-name" class="block" v-model="cEmail"/>
           </div>
 
           <div class="flex flex-col mb-8">
-            <label for="input-name" class="block">Pakket</label>
-            <input id="input-name"
-                   class="block rounded-full resize-none placeholder-primary font-monograss placeholder:font-monograss placeholder:text-center"
-                   placeholder="Partyanimal pakket [TODO]"/>
+            <label for="dropdown-package" class="block">Pakket</label>
+            <select
+                id="dropdown-package"
+                class="block rounded-full resize-none placeholder-primary font-monograss text-center"
+                v-model="cPackage"
+            >
+              <option value="" disabled selected>Select a package</option>
+              <option value="zen">Zen</option>
+              <option value="partyanimals">Partyanimals</option>
+              <option value="b2b">B2B</option>
+            </select>
           </div>
         </div>
 
@@ -29,7 +36,8 @@
           <div class="flex flex-col mb-8">
             <label for="input-name" class="block">Bericht</label>
             <textarea id="input-name"
-                      class="block rounded-4xl resize-none h-44 bg-secondary p-4 font-poppins text-primary focus:outline-none"/>
+                      class="block rounded-4xl resize-none h-44 bg-secondary p-4 font-poppins text-primary focus:outline-none"
+                      v-model="cText"/>
           </div>
           <div class="flex items-center justify-center">
             <button class="w-56 p-4 text-xl button" @click="sendMail">aanvraag versturen</button>
@@ -45,6 +53,7 @@ import type {EmailBody} from "~/server/api/EmailBody";
 
 const cName = ref("")
 const cEmail = ref("")
+const cPackage = ref("")
 const cText = ref("")
 
 function sendMail() {
@@ -86,7 +95,7 @@ function sendMail() {
   drop-shadow-xl;
 }
 
-div input {
+div input, select {
   @apply
   text-primary
   font-poppins

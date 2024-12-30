@@ -15,6 +15,9 @@
             class="button">
           {{ $t('hero_booknow') }}
         </button>
+        <button onclick="window.open('https://wz7p0j-sz.myshopify.com/', '_blank')" class="ml-5 button-secondary">
+          Shop
+        </button>
       </div>
       <div class="hidden lg:mt-0 lg:col-span-5 lg:flex blob">
       </div>
@@ -50,7 +53,8 @@
   mt-5
   bg-secondary
   text-primary
-  py-2
+  pt-3
+  pb-2
   px-6
   rounded-full
   text-xl
@@ -59,6 +63,27 @@
   transform
   hover:bg-primary
   hover:text-secondary
+  hover:shadow-button-border
+  duration-300
+  ;
+}
+
+.button-secondary {
+  @apply
+  mt-5
+  bg-primary
+  text-secondary
+  pt-3
+  pb-2
+  px-6
+  rounded-full
+  text-xl
+  font-semibold
+  font-monograss
+  transform
+  shadow-button-border
+  hover:bg-secondary
+  hover:text-primary
   hover:shadow-button-border
   duration-300
   ;

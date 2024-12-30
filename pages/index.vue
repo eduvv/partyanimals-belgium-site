@@ -51,7 +51,7 @@
         <!-- PDF Link -->
         <div class="flex items-center text-xs sm:text-sm md:text-base">
           <font-awesome icon="file-pdf" class="mr-2"/>
-          <a href="/Algemene%20voorwaarden.pdf" target="_blank" class="underline cursor-pointer">Algemene voorwaarden</a>
+          <a href="/algemene_voorwaarden.pdf" target="_blank" class="underline cursor-pointer">Algemene voorwaarden</a>
         </div>
       </div>
     </footer>
