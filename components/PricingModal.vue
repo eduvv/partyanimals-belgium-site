@@ -30,7 +30,7 @@
 
           <!-- Section 3 -->
           <div v-if="currentSection == 3" class="flex flex-col flex-grow">
-            <PricingContact :price-data="priceData" :package="props.package"/>
+            <PricingContact @emailSent="closeModal" :price-data="priceData" :package="props.package"/>
           </div>
         </div>
       </div>

@@ -94,6 +94,10 @@ import {defineProps, type PropType} from "vue";
 import {PACK} from "~/config/packs";
 import type {EmailBody} from "~/server/api/EmailBody";
 import type {BookingData} from "~/server/api/EmailBody";
+import {useToast} from "vue-toast-notification";
+const emit = defineEmits(['emailSent']);
+
+const $toast = useToast();
 
 const cName = ref("");
 const cEmail = ref("");
@@ -170,19 +174,41 @@ function sendMail() {
       partyDate: cDate.value,
       extraInfo: cExtraInfo.value,
       howDidYouFindMe: cHowFound.value,
+      _pakket: PACK[Number(selectedPackage)]
     },
   }
 
-  $fetch("/api/email", {
-    method: "POST",
-    body
-  }).then(response => {
-    //todo: toast ok
-    //todo close modal
-  }).catch((error) => {
-    //todo toast error
-  });
+  if (!cName.value || !cEmail.value || !cPhone.value || !cStreetName.value || !cStreetNumber.value || !cDate.value || !cPostcode.value) {
+    const missingFields = [];
+
+    if (!cName.value) missingFields.push('naam');
+    if (!cEmail.value) missingFields.push('e-mail');
+    if (!cPhone.value) missingFields.push('telefoonnummer');
+    if (!cStreetName.value) missingFields.push('straat');
+    if (!cStreetNumber.value) missingFields.push('straatnummer');
+    if (!cPostcode.value) missingFields.push('postcode');
+    if (!cDate.value) missingFields.push('datum');
+    if (!cCity.value) missingFields.push('gemeente');
+    const message = `Nog in te vullen: ${missingFields.join(', ')}.`;
+
+    $toast.warning(message, {position: 'top'});
+  } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(cEmail.value)) {
+    $toast.warning('ongeldig e-mail adres', {position: 'top'});
+  } else {
+    $fetch("/api/email", {
+      method: "POST",
+      body
+    }).then(response => {
+      $toast.success('Aanvraag succesvol verstuurd!', {position: 'top'});
+      emit('emailSent')
+    }).catch((error) => {
+      console.error(error);
+      $toast.error('Er ging iets mis tijdens het versturen!', {position: 'top'});
+    });
+  }
+
 }
+
 
 const defaultCountryCode = '+32';
 const countryCode = ref(defaultCountryCode);

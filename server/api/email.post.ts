@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import {EmailBody} from "~/server/api/EmailBody";
+import {PACK} from "~/config/packs";
 
 export default defineEventHandler(async (event) => {
     const body: EmailBody = await readBody(event);
@@ -27,6 +28,8 @@ export default defineEventHandler(async (event) => {
     console.log("subject: ", subject);
 
     const bookingBody= body.bookingData ? `<pre>
+    pakket: ${PACK[body.bookingData.pack]}
+
     ${body.bookingData?.hours?.amount}x extra uur (€${body.bookingData?.hours?.pricePer}/uur): €${body.bookingData?.hours?.priceTotal}
     ${body.bookingData?.kids?.amount}x extra kids (€${body.bookingData?.kids?.pricePer}/kid): €${body.bookingData?.kids?.priceTotal}
     ${body.bookingData?.pinjata?.amount}x extra pinjata (€${body.bookingData?.pinjata?.pricePer}/pinjata): €${body.bookingData?.pinjata?.priceTotal}
@@ -43,7 +46,7 @@ export default defineEventHandler(async (event) => {
     naam: ${body.contactData?.name}
     email: ${body.contactData?.email}
     bericht: ${body.contactData?.extraInfo}
-    pakket: ${body.contactData?._pakket}
+    ${body.contactData?._pakket? `pakket: ${body.contactData?._pakket}`: ''}
     </pre>`
 
 
