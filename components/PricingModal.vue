@@ -88,7 +88,7 @@ const updatePriceData = (event:Event) => {
   bg-primary
   opacity-80
   max-w-[1344px]
-  min-h-[802px]
+  min-h-max
   w-full
   h-auto
   rounded-xl
