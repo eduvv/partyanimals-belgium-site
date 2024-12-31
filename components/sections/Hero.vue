@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import InstagramButton from "~/components/sections/InstagramButton.vue";
+import FacebookButton from "~/components/sections/FacebookButton.vue";
 </script>
 
 <template>
-  <section class="bg-primary flex items-center justify-center px-0 sm:px-12">
+  <section class="bg-primary flex items-center justify-center px-0 sm:px-12 relative">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
       <div class="mr-auto place-self-center lg:col-span-7">
         <h1
             class="max-w-3xl mb-4 text-6xl font-monograss text-text tracking-tight leading-none md:text-6xl xl:text-8xl">
-          Party Animals<span class="text-3xl tracking-wide ml-2">{{ $t('hero_belgium') }}</span></h1>
+          Party Animals<span class="text-3xl tracking-wide ml-2">{{ $t('hero_belgium') }}</span>
+        </h1>
         <p class="max-w-2xl mb-6 font-light text-text font-poppins lg:mb-8 md:text-lg lg:text-2xl">
           {{ $t('hero_sub') }}</p>
         <button
@@ -19,10 +22,24 @@
           Shop
         </button>
       </div>
-      <div class="hidden lg:mt-0 lg:col-span-5 lg:flex blob"></div>
+      <div class="hidden lg:mt-0 lg:col-span-5 lg:flex flex-col items-center">
+        <div class="blob"></div>
+        <!-- Social Buttons Positioned Directly Below the Blob -->
+        <div class="flex justify-center mt-2 space-x-4">
+          <InstagramButton />
+          <FacebookButton />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Social Buttons at Bottom of the Page -->
+    <div class="lg:hidden absolute fixed bottom-6 w-full flex justify-center space-x-4">
+      <InstagramButton />
+      <FacebookButton />
     </div>
   </section>
 </template>
+
 
 <style scoped lang="scss">
 .blob {

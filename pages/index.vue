@@ -4,7 +4,7 @@
     <!-- Hero Section -->
     <ScrollIndicator :sections="sections" class="hidden sm:block"/>
     <Confetti/>
-    <SectionsHero class="min-h-screen"/>
+    <SectionsHero class="min-h-dvh"/>
 
     <!-- About Me Section -->
     <!--    <WavyDivider color-top="bg-primary" color-bottom="fill-secondary"></WavyDivider>-->
