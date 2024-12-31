@@ -182,7 +182,7 @@ function sendMail() {
     },
   }
 
-  if (!cName.value || !cEmail.value || !cPhone.value || !cStreetName.value || !cStreetNumber.value || !cDate.value || !cPostcode.value) {
+  if (!cName.value || !cEmail.value || !cPhone.value || !cStreetName.value || !cStreetNumber.value || !cDate.value || !cPostcode.value || cCity.value) {
     const missingFields = [];
 
     if (!cName.value) missingFields.push('naam');
