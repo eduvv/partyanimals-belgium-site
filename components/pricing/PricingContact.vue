@@ -182,7 +182,7 @@ function sendMail() {
     },
   }
 
-  if (!cName.value || !cEmail.value || !cPhone.value || !cStreetName.value || !cStreetNumber.value || !cDate.value || !cPostcode.value || cCity.value) {
+  if (!cName.value || !cEmail.value || !cPhone.value || !cStreetName.value || !cStreetNumber.value || !cDate.value || !cPostcode.value || !cCity.value) {
     const missingFields = [];
 
     if (!cName.value) missingFields.push('naam');
@@ -194,6 +194,7 @@ function sendMail() {
     if (!cDate.value) missingFields.push('datum');
     if (!cCity.value) missingFields.push('gemeente');
     const message = `Nog in te vullen: ${missingFields.join(', ')}.`;
+    console.warn("missing fields:", missingFields)
 
     $toast.warning(message, {position: 'top'});
   } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(cEmail.value)) {
